@@ -34,12 +34,11 @@ require "../database/conexao.php";
 // 	rmdir_recursive($diretorio);	
 // }
 
-
 // DBdelete('avaliar_titulo a1 INNER JOIN avaliar_titulo a2', 'where a1.data < a2.data and a1.id_usuario = a2.id_usuario and a1.id_titulo = a2.id_titulo');
 // DBexecute('delete a1 from avaliar_titulo a1 INNER JOIN avaliar_titulo a2', 'where a1.data < a2.data and a1.id_usuario = a2.id_usuario and a1.id_titulo = a2.id_titulo');
 // var_dump(DBexecute('rollback'));
 
-$likes = DBselect('avaliar_titulo', 'order by id_usuario DESC, id_titulo DESC');
+$likes = DBselect('comentario_usuario c inner join usuario u on c.para = u.id', '', 'para, nickname');
 
 var_dump($likes);
 

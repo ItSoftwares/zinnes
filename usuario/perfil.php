@@ -9,10 +9,12 @@ session_start();
 
 $menu_style = "transparente";
 
+// var_dump($_SESSION); exit;
+
 if ($_GET['nickname']=="" and !isset($_SESSION['logado'])) {
     $_SESSION['erro_msg'] = "Faça login ou cadastre-se para acessar sua conta!";
     session_write_close();
-    header("location: ");
+    header("location: /");
 }
 
 if ($_GET['nickname']!="") {
