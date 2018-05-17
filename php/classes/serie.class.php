@@ -226,7 +226,8 @@ class serie {
         $query .= ")";
         $result = [];
         $query .= $tipo==0?"":" and p.tipo={$tipo}";
-        $result = DBselect("projeto p INNER JOIN usuario u ON p.id_usuario = u.id", "{$query} order by visualizacoes DESC limit {$limite}, 20", "p.*, u.nickname, (select SUM(visualizacoes) from titulo t where t.id_projeto = p.id) visualizacoes");
+        $result = DBselect("projeto p INNER JOIN usuario u ON p.id_usuario = u.id", "{$query} order by nome ASC limit {$limite}, 20", "p.*, u.nickname, (select SUM(visualizacoes) from titulo t where t.id_projeto = p.id) visualizacoes, (select COUNT(id) from titulo where id_projeto = p.id) capitulos");
+        // $result = DBselect("projeto p INNER JOIN usuario u ON p.id_usuario = u.id", "{$query} and capitulos > 0 order by nome ASC limit {$limite}, 20", "p.*, u.nickname, (select SUM(visualizacoes) from titulo t where t.id_projeto = p.id) visualizacoes, (select COUNT(id) from titulo where id_projeto = p.id) capitulos");
         $qtd = DBselect("projeto p", "{$query}", "COUNT(p.id) as qtd")[0]['qtd'];
 
         return array("quantidade"=>$qtd, "resultados"=>$result);

@@ -101,12 +101,14 @@ class Titulo {
 
         if ($tipo==1) {
             $arquivos = listar($dirname);
+            // echo $dirname."comics".DIRECTORY_SEPARATOR.$this->id.DIRECTORY_SEPARATOR; exit;
 
             if (count($arquivos['nomes'])>0) {
-                foreach ($$arquivos['nomes'] as $key => $value) {
-                    unlink($dirname."comics".DIRECTORY_SEPARATOR.$this->id.DIRECTORY_SEPARATOR.$this->$value);
-                }
-                rmdir($dirname."comics".DIRECTORY_SEPARATOR.$this->id.DIRECTORY_SEPARATOR);
+            	rmdir_recursive($dirname."comics".DIRECTORY_SEPARATOR.$this->id.DIRECTORY_SEPARATOR);
+                // foreach ($$arquivos['nomes'] as $key => $value) {
+                //     unlink($dirname."comics".DIRECTORY_SEPARATOR.$this->id.DIRECTORY_SEPARATOR.$this->$value);
+                // }
+                // rmdir($dirname."comics".DIRECTORY_SEPARATOR.$this->id.DIRECTORY_SEPARATOR);
             }
         }
 

@@ -12,7 +12,7 @@ $links_slides = DBselect("slides");
 $ultimos = DBselect("titulo t INNER JOIN projeto p ON t.id_projeto = p.id", "where rascunho=0 order by data DESC limit 8", "t.*, p.tipo, p.thumb_projeto, (select COUNT(id_usuario) from avaliar_titulo where id_titulo = t.id) gosteis, p.descricao as projeto_descricao");
 
 // $vistos = DBselect("titulo t INNER JOIN projeto p ON t.id_projeto = p.id", "where rascunho=0 order by visualizacoes DESC limit 7", "t.*, p.tipo, p.thumb_projeto, p.descricao as projeto_descricao");
-$vistos = DBselect("(select * from titulo where rascunho=0 order by visualizacoes DESC limit 7) t INNER JOIN projeto p ON t.id_projeto = p.id", "order by RAND()", "t.*, p.tipo, p.thumb_projeto, p.descricao as projeto_descricao");
+$vistos = DBselect("(select * from titulo where rascunho=0 order by visualizacoes DESC limit 20) t INNER JOIN projeto p ON t.id_projeto = p.id", "order by RAND() limit 7", "t.*, p.tipo, p.thumb_projeto, p.descricao as projeto_descricao");
 
 $series_por_genero = DBselect("projeto p INNER JOIN genero g ON p.id_genero = g.id", "group by id_genero order by visualizacoes DESC limit 8", "p.*, (select SUM(visualizacoes) from titulo where titulo.id_projeto = p.id) visualizacoes, g.nome as genero");
 
@@ -54,7 +54,9 @@ $menu_style = "transparente";
                 <li data-slide='<? echo $key+1; ?>'>
                     <a href="<? echo $links_slides[$key]['link'] ?>" target="_BLANK">
                         <img src="/servidor/slides/<? echo $value ?>">
-                        <div class="sombra"></div>
+                        <div class="sombra">
+                        	<img src="/servidor/slides/<? echo $value ?>">
+                        </div>
                     </a>
                 </li>
                 <?}?>

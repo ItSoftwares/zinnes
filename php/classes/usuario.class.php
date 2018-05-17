@@ -87,6 +87,12 @@ class Usuario {
                         if ($this->ultimo_login==null or $this->ultimo_login=="") {
                             $_SESSION['conf_msg'] = "Bem vindo a ZINNES. Toda a equipe estará a disposição!";
                         }
+
+                        // VERIFICAR SE TEM CAPITULOS COMO RASUNHO
+                        $capitulos = DBselect('titulo t INNER JOIN projeto p ON t.id_projeto = p.id', "where p.id_usuario={$this->id} and t.rascunho=1", 'COUNT(t.id) as qtd')[0]['qtd'];
+                        if ($capitulos>0) {
+                        	$_SESSION['info_msg'] = "Você tem {$capitulos} capítulo".($captiulos>1?"s":"")." não publicado".($captiulos>1?"s":"").".<br><br>Capítulos como rascunho não podem ser vistos pelos leitores.";
+                        }
                         
                         DBupdate('usuario',array('ultimo_login'=>date('Y-m-d H:i:s', time())) , "where id={$this->id}");
                         $this->ultimo_login = date('Y-m-d H:i:s', time());

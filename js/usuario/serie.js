@@ -11,6 +11,12 @@ $(document).ready(function() {
     original = $("#imagem-projeto img").attr("src");
     
     $("#paginas span[data-pagina="+ultimaPagina+"]").click();
+
+    if (typeof usuario!="undefined" || tipo_usuario!=0) {
+    	if (serie.id_usuario==usuario.id) {
+    		$("#capitulos").prepend("<p class='aviso'>Capítulos não publicados não podem ser vistos pelos leitores.</p>");
+    	}
+    }
 });
 
 $("#icon-mudar-banner").click(function() {
@@ -36,8 +42,14 @@ $(".excluir").click(function(e) {
     index = $(this).closest("li").attr("data-id");
     id_capitulo = index; id_capitulo = capitulos[id_capitulo].id;
     nome = $(this).closest("li").find("h3").text();
-    data = {id: id_capitulo, funcao: "excluir", nome: nome, serie: serie.id, id_usuario: serie.id_usuario};
-
+    data = {
+    	id: id_capitulo, 
+    	funcao: "excluir", 
+    	nome: nome, 
+    	serie: serie.id, 
+    	id_usuario: serie.id_usuario,
+    	tipo: serie.tipo
+    };
     // console.log(data); return;
     
     confirmacao("Remover Capítulo", "Deseja realmente excluir este capítulo? Todas as informações serão permanentemente apagadas!", function() {

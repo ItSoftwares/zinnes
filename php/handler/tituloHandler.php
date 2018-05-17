@@ -155,6 +155,7 @@ if (isset($_POST)) {
     } 
     else if ($funcao=="excluir") {
         $titulo = new Titulo($dados);
+        // echo $tipo; exit;
         $result = $titulo->excluir($tipo);
         $id_usuario = $dados['id_usuario']; unset($dados['id_usuario']);
 

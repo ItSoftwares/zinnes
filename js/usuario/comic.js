@@ -494,6 +494,8 @@ function atualizarComic(data, botoes, mensagemExito) {
                     $(".publicar-agora").html("Atualizar <i class='fa fa-check'></i>");
                     $(".salvar, .agendar").attr("disabled", true);
                     comic.rascunho = 0;
+                } else if (data.get("funcao")=="novo") {
+                	comic.rascunho = 1;
                 }
                 
                 reorganizarArquivos();
