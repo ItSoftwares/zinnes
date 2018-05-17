@@ -9,7 +9,7 @@ $diretorio = realpath("servidor".DIRECTORY_SEPARATOR."slides");
 if ($diretorio!="" and is_dir($diretorio)) $slides = listar($diretorio)['nomes'];
 $links_slides = DBselect("slides");
 
-$ultimos = DBselect("titulo t INNER JOIN projeto p ON t.id_projeto = p.id", "where rascunho=0 order by data DESC limit 8", "t.*, p.tipo, p.thumb_projeto, (select COUNT(id_usuario) from avaliar_titulo where id_titulo = t.id) gosteis, p.descricao as projeto_descricao");
+$ultimos = DBselect("titulo t INNER JOIN projeto p ON t.id_projeto = p.id INNER JOIN genero g ON g.id = p.id_genero", "where rascunho=0 order by data DESC limit 8", "t.*, p.tipo, p.thumb_projeto, (select COUNT(id_usuario) from avaliar_titulo where id_titulo = t.id) gosteis, p.descricao as projeto_descricao, g.nome as genero");
 
 // $vistos = DBselect("titulo t INNER JOIN projeto p ON t.id_projeto = p.id", "where rascunho=0 order by visualizacoes DESC limit 7", "t.*, p.tipo, p.thumb_projeto, p.descricao as projeto_descricao");
 $vistos = DBselect("(select * from titulo where rascunho=0 order by visualizacoes DESC limit 20) t INNER JOIN projeto p ON t.id_projeto = p.id", "order by RAND() limit 7", "t.*, p.tipo, p.thumb_projeto, p.descricao as projeto_descricao");
@@ -101,7 +101,7 @@ $menu_style = "transparente";
                                 ?>
                                 <h3 class="titulo"><? echo $nome ?></h3>
                                 <p class="descricao"><? echo substr($descricao, 0, 150)."..." ?></p>
-                                <p class="genero contador"><i class="fa fa-heart"></i> <span><? echo $titulo->gosteis ?></span></p>
+                                <p class="genero contador"><i class="fa fa-tag"></i> <span><? echo $titulo->genero ?></span></p>
                             </div>
                         </a>
                     </li>
