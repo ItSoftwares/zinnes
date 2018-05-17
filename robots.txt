@@ -1,0 +1,16 @@
+# robots.txt gerado em 
+# marketingdebusca.com.br/robots-txt/
+User-agent: Googlebot-Image
+Disallow: /
+User-agent: yahoo-mmcrawler
+Disallow: /
+User-agent: psbot
+Disallow: /
+User-agent: *
+Disallow: 
+Disallow: /php
+Disallow: /js
+Disallow: /servidor
+Disallow: /adm
+
+Sitemap: https://www.zinnes.com.br/sitemap.xml
