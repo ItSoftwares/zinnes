@@ -1,0 +1,577 @@
+@import url('https://fonts.googleapis.com/css?family=Muli|Open+Sans|Shadows+Into+Light|Ubuntu|Montserrat|Quicksand|Lora'); 
+@import url("headerRodape.css");
+@import url("loginCadastro.css");
+@import url(modals.css);
+@import url(reset.css);
+
+@font-face {
+	font-family: marnie;
+	src: url(../fonts/JTMarnie-Regular.otf);
+}
+
+body.hidden {
+    overflow: hidden;
+}
+
+/* ======================= */
+/* ========INPUTS========= */
+/* ======================= */
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+.input.linha {
+	position: relative;
+	width: 100%;
+	display: flex;
+/*	justify-content: space-between;*/
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.input.linha input, .input.linha textarea, .input.linha select {
+	background: none;
+	width: 100%;
+    padding: 10px 5px;
+	transition: .3s ease;
+	border-bottom: 2px solid #e2e2e2;
+	font-size: .85em;
+    resize: none;
+    padding-right: 40px;
+}
+
+.input.linha textarea {
+    height: 20px;
+}
+
+.input.linha i {
+	color: #e2e2e2;
+	width: 20px;
+	transition: .3s ease;
+	position: absolute;
+    right: 5px;
+    top: 11px;
+}
+
+.input.linha input:focus + i, .input.linha textarea:focus + i, .input.linha select:focus + i {
+	color: #2196F3;
+}
+
+.input.linha input:focus, .input.linha textarea:focus, .input.linha select:focus {
+	border-bottom-color: #2196F3;
+}
+
+.input.linha textarea:focus {
+/*    resize: vertical;*/
+    height: 100px;
+}
+
+.input.linha label {
+    display: none;
+}
+
+.input.normal {
+    position: relative;
+/*    margin-bottom: 10px;*/
+/*    width: 100%;*/
+    box-sizing: border-box;
+}
+
+.input.normal > label {
+    font-size: .8em;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: bold;
+    display: block;
+/*    opacity: .8;*/
+}
+
+.input.normal input, .input.normal textarea, .input.normal select {
+    padding: 10px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    resize: vertical;
+    transition: .3s ease;
+    border: 1px solid #eee;
+    opacity: .7;
+    background: #eee;
+    width: 100%;
+    box-sizing: border-box;
+/*    padding-right: 40px;*/
+}
+
+.input.normal textarea {
+    min-height: 100px;
+    max-height: 300px;
+}
+
+.input.normal input:focus, .input.normal textarea:focus, .input.normal select:focus {
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+    opacity: 1;
+    background: white;
+}
+
+.input.normal i {
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    color: rgba(0,0,0,.5);
+    transition: .3s ease;
+}
+
+.input.normal input:focus + i {
+    color: rgba(0,0,0,.8);
+}
+
+.input.metade {
+    width: 48% !important;
+}
+
+.campos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* ======================= */
+/* ========BOTOES========= */
+/* ======================= */
+
+.botao:not(.linha) {
+	padding: 8px 25px;
+/*    border-radius: 3px;*/
+    border-radius: 100px;
+    background: #2196F3;
+    color: white;
+	cursor: pointer;
+    transition: .3s ease;
+    box-sizing: border-box;
+    font-size: .75em;
+    font-weight: bold;
+}
+
+.botao:not(.linha):not(:disabled):not(.disabled):hover {
+    box-shadow: inset 0 0 0 50px rgba(0,0,0,.1)
+}
+
+a.botao {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.botao i {
+    margin-left: 10px;
+}
+
+.botao.canto {
+    border-radius: 2px;
+}
+
+.botao.linha {
+    background: none;
+    padding-bottom: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: .85em;
+    position: relative;
+    transition: .3s ease;
+    color: #999;
+}
+
+.botao.linha:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    transition: .3s ease;
+    background: #2196F3;
+    border-radius: 3px;
+}
+
+.botao.linha:hover {
+    color: black;
+}
+
+.botao.linha:hover:before, .botao.linha:active:before {
+    width: 100%;
+}
+
+.botao.linha:disabled, .botao.linha.disabled {
+    opacity: .2;
+    cursor: no-drop !important;
+    background: none !important;
+}
+
+.botao.linha:disabled:hover:before, .botao.linha.disabled:hover:before {
+    width: 0;
+}
+
+.disabled, *:disabled {
+	opacity: .5 !important;
+    cursor: no-drop !important;
+    background: #e2e2e2 !important;
+    color: black !important;
+    font-weight: bold;
+}
+
+.clear {
+	clear: both;
+}
+
+.fechar {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background: #e95950;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.fechar:hover {
+    transform: rotate(180deg);
+}
+
+.img-loading {
+	width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: inset 2px 2px 0 #2196F3;
+    animation: loading infinite 1s linear;
+	margin: auto;
+}
+
+.box-window {
+	width: 96%;
+    margin: auto;
+}
+
+.molde {
+/*	display: none;*/
+}
+
+.lado-a-lado {
+	display: flex;
+    align-items: center;
+	margin-bottom: 10px
+}
+
+.lado-a-lado p {
+	font-size: .8em;
+	color: rgba(255,255,255,.8);
+	margin-right: 15px;
+	display: flex;
+	align-items: center;
+	cursor: default;
+}
+
+.lado-a-lado p i {
+	margin-right: 5px;
+}
+
+.aviso {
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 2px;
+    background: rgba(0,0,0,.4);
+    color: white;
+    margin: auto;
+    font-size: .8em;
+    display: table;
+    cursor: default
+}
+
+/* ======================= */
+/* ========GRUPO DE OPÇÕES========= */
+/* ======================= */
+
+.grupo-opcoes {
+    list-style: none;
+    position: relative;
+    z-index: 1;
+}
+
+.grupo-opcoes:hover .opcoes {
+    display: block;
+}
+
+.grupo-opcoes:hover .principal {
+    border-radius: 3px 3px 0 0;
+/*    background: #2196F3*/
+}
+
+.grupo-opcoes .principal {
+    color: white;
+    background: #28282a;
+    padding: 12px;
+    border-radius: 3px;
+    cursor: default;
+/*    transition: .3s ease background;*/
+}
+
+.grupo-opcoes .opcoes {
+    display: none;
+    position: absolute;
+    top: 99%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0 0 3px 3px;
+}
+
+.grupo-opcoes .opcao:not(:last-child) {
+    border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+.grupo-opcoes .opcao {
+/*    display: none;*/
+    text-align: center;
+    background: #555459;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.grupo-opcoes .opcao:hover {
+    box-shadow: inset 2px 0 0 #2196F3;
+}
+
+.grupo-opcoes li a {
+    padding: 12px;
+    text-decoration: none;
+    color: white;
+    display: block
+}
+
+.grupo-opcoes li i {
+    margin-right: 10px;
+}
+
+.fundo {
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(rgba(0,0,0,.6), rgba(0, 0, 0, 0.8));
+    z-index: 10;
+    overflow-y: auto;
+    padding: 50px 0 30px;
+    box-sizing: border-box;
+    display: none;
+}
+
+.fundo :not(i) {
+    font-family: Quicksand;
+}
+
+.fundo > div {
+    width: 96%;
+    background: #FEFEFE;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+}
+
+.fundo > div > h3 {
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+/* ======================= */
+/* ========CALENDARIO========= */
+/* ======================= */
+
+#calendario {
+/*    width: 100%;*/
+    opacity: 0;
+    transition: opacity 1s ease;
+    box-shadow: 0 0 5px rgba(0,0,0,.15);
+    padding-bottom: 5px;
+    border-radius: 3px;
+}
+
+#calendario header {
+    background: #2d3e4e;    
+    border-radius: 3px 3px 0 0;
+    padding: 13px 0;
+    position: relative;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#calendario #mes {
+    color: white;
+    margin-right: 8px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#calendario #ano {
+    font-size: 1em;
+    text-align: center;
+    color: white;
+}
+
+#calendario #voltar-mes, #calendario #avancar-mes {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    color: white;
+    border-radius: 4px;
+    font-size: 30px;
+    display: table;
+    width: 40px;
+    text-align: center;
+    transition: .3s ease;
+    cursor: pointer;
+}
+
+#calendario header i:hover {
+    background: rgba(255,255,255,.2);
+    
+}
+
+#calendario #voltar-mes {
+    left: 10px;
+}
+
+#calendario #avancar-mes {
+    right: 10px;
+}
+
+#calendario #nome-semana {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    cursor: default;
+}
+
+#nome-semana span {
+    font-weight: bold;
+}
+
+.semana {
+    display: flex;
+    justify-content: space-around;
+    padding: 3px;
+}
+
+.semana:not(:last-child) {
+/*    border-bottom: 1px solid #e9e9e9;*/
+}
+
+.semana span {
+    padding: 4px 0;
+    text-align: center;
+    width: calc(100% / 9);
+    transition: .3s ease;
+    border-radius: 4px;
+    position: relative;
+}
+
+.semana span[data-nada="0"] {
+    background: #fcfcfc;
+    cursor: pointer;
+}
+
+.semana span[data-nada="0"]:hover {
+    background: #2d3e4e;
+    color: white;
+}
+
+.semana span.hoje {
+    background: rgba(0,0,0,.3) !important;
+    color: white;
+}
+
+.semana span.selecionado {
+    background: #3e97eb !important;
+    color: white;
+}
+
+.dia-escolhido {
+    float: left;
+    margin: 10px;
+    padding: 8px;
+    font-size: .9em;
+    font-style: italic;
+}
+
+/* ======================= */
+/* ========POPUPS========= */
+/* ======================= */
+
+.popup {
+    position: fixed;
+    font-family: Quicksand;
+    left: 10px;
+    bottom: -200px;
+    max-width: 250px;
+    transition: .6s ease;
+    color: white;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: .85em;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.popup-info {
+    /*background: #2d3e4e;*/
+    background: #2196F3;
+}
+
+.popup-loading {
+    color: black;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-loading .img-loading {
+	flex-shrink: 0;
+    margin-right: 20px; 
+    width: 20px;
+    height: 20px;
+}
+
+.popup-erro {
+    background: #D9534F;
+}
+
+.popup-conf {
+    background: #5CB85C;
+}
+
+/* ======================= */
+/* ========ANIMACOES========= */
+/* ======================= */
+
+@keyframes loading {
+	0% {
+		transform: rotate(0deg)
+	}
+	
+	100% {
+		transform: rotate(360deg)
+	}
+}

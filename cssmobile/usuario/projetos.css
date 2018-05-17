@@ -1,0 +1,255 @@
+.box-window *:not(i) {
+	font-family: Quicksand;
+}
+
+.box-window > a {
+	margin: 20px 0;
+}
+
+.box-window > a i {
+	margin-left: auto;
+} 
+
+#series > h2 {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+#cabecalho {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+ 
+article {
+    margin-bottom: 60px;
+    min-height: 50vh;
+}
+
+article ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+article ul > button {
+    margin: 20px auto;
+}
+
+article > .aviso {
+    display: none;
+    margin-bottom: 10px;
+}
+
+.projeto {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    margin-top: 20px;
+    transition: .3s ease;
+    padding: 10px;
+    border-bottom: 1px dashed #ccc;
+    opacity: 0;
+}
+
+.projeto:hover {
+    box-shadow: inset 3px 0 0 #2196F3;
+    /*border-color: transparent;*/
+    padding-left: 15px;
+    margin-right: -5px;
+}
+
+.projeto:hover .projeto-acoes {
+    opacity: 1;
+}
+
+.projeto:hover header div h3 a {
+    text-decoration: underline;
+}
+
+.projeto-fundo {
+	display: none;
+}
+
+.projeto header {
+    display: flex;
+    align-items: flex-start;
+    /*margin-bottom: 30px;*/
+}
+
+.projeto header img {
+    width: 50px;
+    border-radius: 3px;
+    margin-right: 10px;
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+}
+
+.projeto header > i {
+    width: 50px;
+    height: 50px;
+    border-radius: 3px;
+    margin-right: 10px;
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #999;
+}
+
+.projeto header div h3 {
+    margin-bottom: 10px;
+}
+
+.projeto header div h3 a {
+    color: black;
+    text-decoration: none;
+}
+
+.projeto .lado-a-lado {
+	display: flex;
+    align-items: flex-start;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+}
+
+.projeto .lado-a-lado p {
+	font-size: .8em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.projeto .dot {
+    /*margin: 0 12px;
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.4);*/
+}
+ 
+.projeto-info ul {
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.projeto-info li {
+    /*margin-right: 20px;*/
+    display: flex;
+    align-items: center;
+}
+
+.projeto-info li p {
+    font-size: .8em;
+    margin-left: 5px;
+    margin-bottom: 0 !important;
+    color: black !important;
+}
+
+.preojeto-info .dot {
+	margin: 0 10px;
+}
+
+.projeto-info li i {
+    font-size: .7em;
+    margin-right: 5px;
+}
+
+.projeto-acoes {
+    position: absolute;
+    bottom: 10px;
+    width: 40%;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    opacity: .75;
+    transition: .3s ease;
+}
+
+.projeto-acoes a {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.projeto-acoes i {
+    width: 35px;
+    height: 35px;
+    /*margin-bottom: 4px;*/
+    color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    transition: .3s ease;
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+}
+
+.projeto-acoes a:nth-child(1) i {
+    color: #2196F3;
+    /*color: white;*/
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+}
+
+.projeto-acoes a:nth-child(2) i {
+    color: #FFC107;
+    /*color: white;*/
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+}
+
+.projeto-acoes a:nth-child(3) i {
+    color: #e95950;
+    /*color: white;*/
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+}
+
+#form-serie {
+}
+
+#form-serie .input {
+	width: 100%;
+}
+
+#form-serie form {
+	padding: 10px;
+}
+
+#form-serie textarea {
+	height: 105px;
+}
+
+#lista-tags {
+	list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px 0 20px;
+}
+
+#lista-tags li {
+    font-size: .8em;
+    margin-right: 10px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    background: #3b5998;
+    color: white;
+    padding-left: 10px;
+    border-radius: 3px;
+    cursor: default;
+}
+
+#lista-tags li i {
+    cursor: pointer;
+    padding: 8px;
+    background: rgba(0,0,0,.2);
+    margin-left: 10px;
+}
+
+#form-serie button {
+    float: right;
+    margin-bottom: 10px;
+}

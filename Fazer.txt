@@ -1,0 +1,39 @@
+OK - Adicionar link para website publisher.
+OK - Pagina: Escolher publicar Comic ou Novel (Lista de Projetos), editar serie
+OK - Pagina: Listar capítulos da Serie (projeto), visão do usuario e do públisher
+OK - Pagina: Adicionar Comic
+OK - Pagina: Adicionar Novel
+OK - Pagina: Ler Comic
+OK - Pagina: Ler Novel
+OK - Pedir mensagem de boa vinda pro email, e modelo de email.
+OK - mandar log para usuario edição criação exclusão de series, titulos, comentarios. - OK
+OK - Apagar Titulo - OK
+OK - Pesquisa por tag
+OK - excluir serie
+OK - excluir titulo
+OK - Termianr Perfil
+OK - Confirmação de conta para pode publicar trabalhos.
+OK - ir e voltar com teclas comic
+OK - pre-visualizar comic
+OK - Tela principal
+OK - Editar PIN moderador
+OK - link slides
+OK - verificar bloqueio temporario se esta contando os dias
+OK - rever logs criados para passar a maior quantidade de informação possivel.
+OK - Criar Rotinas: publicar projetos, remoção de notificações, Email de aniversario com mais de 50 dias, Desbloqueio de conta.
+OK - Desbloquear conta ao fazer login
+OK - capitulos não aparecem na serie
+OK - erro ao mudar thumb serie log
+OK - recuperar senha
+OK - popular tabelas
+
+OK - Pesquisar series pelo ADM 
+OK - Apagar Serie ADM
+OK - Verificar Ordem de upload
+OK - apagar capitulo da erro de referencia log_moderador
+OK - Colar formatação paragrafos
+
+Login com google e facebook
+Anuncios no site
+META DADOS
+ROBOTS

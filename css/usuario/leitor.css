@@ -1,0 +1,538 @@
+header *:not(i), #main *:not(i), aside *:not(i) {
+    font-family: Quicksand;
+}
+
+body {
+/*    background: #f4f4f4;*/
+}
+
+#capitulo-topo {
+    height: 23.793vw;
+    background: url(../../img/banner.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+#tudo {
+    position: relative;
+}
+
+#banner {
+    background: radial-gradient(rgba(0, 0, 0, 0),rgba(0,0,0,.6));
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 3;
+    height: 100%;
+    position: relative;
+    cursor: default;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+#titulo > h1 {
+    margin: 10px 0;
+    font-size: 2.5em;
+}
+
+#titulo > a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 5px 15px;
+    border-radius: 30px;
+}
+
+#titulo > a i {
+    font-size: 14px;
+    margin-left: 7px;
+}
+
+#main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+    position: relative;
+    transition: .3s ease;
+}
+
+#tudo.aberto #main {
+    margin-left: 254px;
+}
+
+aside {
+    position: absolute;
+    left: -254px;
+    top: 0;
+    width: 254px;
+    background: #f4f4f4;
+    transition: .3s ease left, .3s ease padding;
+    padding: 20px 8px;
+    box-sizing: border-box;
+    height: 100vh;
+    /*overflow-y: hide;*/
+    padding-bottom: 99px;
+}
+
+#tudo.aberto aside {
+    left: 0;
+}
+
+aside.maximo {
+    padding-bottom: 30px;
+}
+
+#imagem-projeto {
+    color: black;
+    text-decoration: none;
+}
+
+#imagem-projeto img {
+	width: 100%;
+    border-radius: 3px;
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+    margin: auto;
+    display: block;
+    transition: .3s ease;
+    max-width: 200px;
+}
+
+#imagem-projeto h2 {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+aside #seguir {
+    margin: 20px auto 10px;
+    display: block;
+}
+
+#autor {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 10px;
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+    background: rgba(0,0,0,.1);
+    /* width: calc(100% + 40px); */
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+#autor h3 {
+    font-weight: normal;
+    font-size: 1em;
+}
+
+#autor img {
+    width: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: block;
+}
+
+.lado-a-lado {
+    justify-content: center;
+}
+
+.lado-a-lado p {
+    color: rgba(0, 0, 0, 0.8) !important;
+    margin: 10px 0;
+}
+
+#lista h3 a {
+    opacity: .5;
+    font-size: .8em;
+    float: right;
+    color: black;
+    text-decoration: none;
+}
+
+#lista h3 a:hover {
+    text-decoration: underline;
+}
+
+#lista {
+	list-style: none;
+    margin-top: 30px;
+}
+
+#lista {
+/*
+    max-height: 30vh;
+    overflow: auto;
+    padding: 0 10px;
+*/
+}
+
+li.lista-pequena {
+    margin-top: 20px;
+}
+
+li.lista-pequena a {
+	display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+    transition: .3s ease;
+}
+
+li.lista-pequena a:hover {
+    box-shadow: inset 2px 0 0 #2196F3;
+    padding-left: 10px;
+}
+
+li.lista-pequena:not(:last-child) {
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #e2e2e2;
+}
+
+li.lista-pequena img {
+    width: 40px;
+    margin-right: 10px;
+	border-radius: 3px;
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+
+li.lista-pequena h4 {
+    margin-bottom: 5px;
+}
+
+li.lista-pequena p {
+    color: #ccc;
+    font-size: .8em
+}
+
+#main article {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+}
+
+#main .aside-menu {
+    position: fixed;
+    left: 0px;
+    top: 79px;
+    padding: 10px;
+    background: #f4f4f4;
+    border-radius: 0 5px 5px 0; 
+    font-size: 20px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+#tudo.aberto #main .aside-menu {
+    transform: rotate(180deg);
+    border-radius: 5px 0 0 5px; 
+    left: 254px;
+}
+
+#main aside, #titulo {
+
+    /*padding: 30px;*/
+    /*background: white;*/
+    /*margin-top: -30px;*/
+    /*border-radius: 4px;*/
+    /*box-shadow: 0 2px 10px rgba(0,0,0,.3);*/
+    /*box-sizing: border-box;*/
+    /*margin-bottom: 40px;*/
+
+}
+
+#main article h1 {
+    font-size: 1.5em;
+    width: 100%;
+    margin: 20px auto;
+}
+
+#main article > h4 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    margin: 40px 0 20px;
+    font-size: .9em;
+    color: #777;
+}
+
+#main article > h4 span {
+    opacity: .5;
+}
+
+#main article > h4 .right {
+    float: right;
+}
+
+#texto {
+    font-family: Lora;
+    line-height: 30px;
+    user-select: none;  
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    padding-bottom: 30px;
+    min-height: 300px;
+}
+
+#texto p {
+    font-family: Lora;
+    margin-bottom: 15px;
+    text-align: justify;
+    font-size: 1.1em;
+}
+
+#tudo.aberto #luz {
+    /*left: 305px;*/
+}
+
+#luz {
+    position: fixed;
+    top: 79px;
+    right: 5px;
+    width: 40px;
+    height: 40px;
+    background: #28282A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    color: white;
+    cursor: pointer;
+    opacity: .3;
+    transition: .3s ease;
+}
+
+#luz:hover {
+    opacity: 1
+}
+
+#menu-atalhos {
+    position: fixed;
+    right: 10px;
+    bottom: 15px;
+}
+
+#menu-atalhos a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+/*    border: 1px solid #28282a;*/
+    box-shadow: 0 0 3px #28282a;
+    border-radius: 4px;
+    position: relative;
+    margin-top: 15px;
+    color: black;
+    text-decoration: none;
+    transition: .3s ease;
+    opacity: .3;
+}
+
+#menu-atalhos a i {
+    font-size: 20px;
+}
+
+#menu-atalhos a:hover {
+    opacity: 1;
+    background: #28282a;
+    color: white;
+}
+
+#menu-atalhos a p {
+    position: absolute;
+    right: 120%;
+    bottom: 0;
+    background: #28282a;
+    color: white;
+    min-width: 300px;
+    box-sizing: border-box;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+    display: none;;
+}
+
+#acoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.botao.borda {
+    background: none !important;
+    border: 2px solid #e95950;
+    color: #e95950 !important;
+    font-weight: bold;
+    opacity: .7;
+}
+
+.botao.borda:not(:disabled):hover, #tudo.escuro .botao.borda, .botao.borda.marcado {
+    background: #e95950 !important;
+    color: white !important;
+    box-shadow: 0 0 0 !important;
+    opacity: 1;
+}
+
+#acoes *:not(i) {
+    font-family: Quicksand
+}
+
+#acoes div {
+    display: flex;
+    align-items: center;
+}
+
+#acoes p {
+    font-weight: bold;
+}
+
+#acoes a {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* opacity: .6; */
+    background: white;
+    transition: .3s ease;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.5);
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+}
+
+#acoes div a:nth-child(3):hover {
+	background: #00aced;
+	color: white;
+}
+
+#acoes div a:nth-child(2):hover {
+	background: #3b5998;
+	color: white;
+}
+
+#acoes div a:nth-child(4):hover {
+	background: #d34836;
+	color: white;
+}
+
+#acoes div a:nth-child(5):hover {
+	background: #2196F3;
+	color: white;
+}
+
+#comentarios {
+    margin-bottom: 60px;
+}
+
+/*====================*/
+/*=======ESCURO=======*/
+/*====================*/
+
+#tudo.escuro {
+    background: #28282A;
+    color: #d4d4d4;
+}
+
+#tudo.escuro .aside-menu, #tudo.escuro aside {
+    background: #515154;
+}
+
+#tudo.escuro #luz {
+    background: white;
+    color: black;
+}
+
+#tudo.escuro article > h4 {
+    border-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#tudo.escuro #menu-atalhos a {
+    box-shadow: 0 0 3px rgba(255,255,255,1);
+    color: white;
+}
+
+#tudo.escuro #menu-atalhos a:hover {
+    color: #28282a;
+    background: white;
+    opacity: 1;
+}
+
+#tudo.escuro #menu-atalhos a p {
+    box-shadow: 0 0 3px rgba(255,255,255,1);
+    background: white;
+    color: black;
+}
+
+#tudo.escuro #comentar {
+    border-color: rgba(255,255,255,.1)
+}
+
+#tudo.escuro aside #imagem-projeto h2 {
+    color: white;
+}
+
+#tudo.escuro aside .lado-a-lado p {
+    color: white !important;
+    opacity: .8;
+}
+
+#tudo.escuro aside #autor {
+    background: rgba(0,0,0,.2);
+    color: white;
+}
+
+#tudo.escuro aside #lista h3 a {
+    color: white;
+}
+
+#tudo.escuro aside .lista-pequena h4 {
+    color: white;
+}
+
+#paginas .navegacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#paginas .navegacao select {
+    width: 150px;
+    margin: 0 20px;
+}
+
+#paginas .navegacao button {
+    width: 100px;
+}
+
+#imagens {
+    padding: 30px 0;
+}
+
+#imagens img {
+    width: 100%;
+    /*padding: 5px;*/
+    box-sizing: border-box;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    border-radius: 4px;
+}
+
+#tudo.escuro #imagens img {
+    /*box-shadow: 0 0 5px rgba(255,255,255,.5);*/
+}

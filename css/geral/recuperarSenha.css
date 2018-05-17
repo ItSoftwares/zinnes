@@ -1,0 +1,51 @@
+#recuperar *:not(i) {
+	font-family: Quicksand;
+}
+
+footer {
+	display: none !important;
+}
+
+#recuperar {
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #28282a;
+}
+
+#recuperar #foto-perfil {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+
+#recuperar p {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: .9em;
+    cursor: default;
+}
+
+#recuperar form {
+	width: 300px;
+}
+
+#recuperar .input {
+	margin-bottom: 20px;
+}
+
+#minutos {
+	font-style: italic;
+	float: left;
+    opacity: .5;
+    padding: 7.5px 0;
+}
+
+#recuperar button {
+	float: right;
+}

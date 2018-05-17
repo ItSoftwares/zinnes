@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>ZINNES - EMAIL</title>
+        <meta charset="utf-8">
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand|Yanone+Kaffeesatz" rel="stylesheet">
+        <style>
+        	@import url('https://fonts.googleapis.com/css?family=Quicksand|Yanone+Kaffeesatz');
+
+        	* {
+        		font-family: 'Quicksand', 'sans-serif';
+        		margin: 0;
+        		padding: 0;
+        		border: 0;
+        	}
+
+        	html, body {
+        		min-height: 100%;
+        		height: 100%;
+        	}
+
+			body {
+				display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    background: #F6F7FB;
+			}
+
+			#email {
+				width: 100%;
+				max-width: 600px;
+				background: white;
+				box-shadow: 0 0 5px rgba(0,0,0,.1);
+				border-radius: 5px;
+			}
+
+			header {
+				padding: 10px 20px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			header #logo {
+				width: 80px;
+			}
+
+			header h1 {
+			    font-family: 'Yanone Kaffeesatz';
+			    font-size: 2em;
+			    font-weight: normal;
+			}
+
+			article {
+			    padding: 40px 20px;
+			    background-image: url(https://www.zinnes.com.br/img/fundo-email.jpg);
+			    background-size: cover;
+			    position: relative;
+			    color: white;
+			}
+
+			article #fundo {
+				position: absolute;
+			    left: 0;
+			    top: 0;
+			    width: 100%;
+			    height: 100%;
+			    z-index: 1;
+			    background: #2196F3;
+				opacity: .8;
+			}
+
+			article > *:not(#fundo) {
+			    position: relative;
+    			z-index: 2;
+			}
+
+			article h2 {
+				margin-bottom: 25px;
+			}
+
+			article p {
+				font-size: .9em;
+			    margin-bottom: 15px;
+    			line-height: 30px;
+    			cursor: pointer;
+			}
+
+			.botao {
+				margin: 35px auto;
+			    display: block;
+			    padding: 8px 25px;
+			    border-radius: 5px;
+			    background: #2196F3;
+			    color: white;
+			    cursor: pointer;
+			    transition: .3s ease;
+			    box-sizing: border-box;
+			    font-size: .835em;
+			    font-weight: bold;
+			    box-shadow: inset 0 -2px 0 rgba(0,0,0,.2);
+			    text-decoration: none;
+			    width: 100px;
+			}
+
+			footer {
+				/*padding-top: 20px;*/
+			}
+
+			#redes {
+				display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    margin: 20px 0;
+			    list-style: none;
+			}
+
+			#redes li {
+				margin: 0 10px;
+			}
+
+			#redes li a {
+				color: white;
+				text-decoration: none;
+			}
+
+			#redes li i {
+			    background: #2196F3;
+			    display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    width: 30px;
+			    height: 30px;
+			    border-radius: 5px;
+			}
+
+			/*TABELA*/
+
+			table {
+				width: 100%;
+				max-width: 600px;
+				background: white;
+				box-shadow: 0 0 5px rgba(0,0,0,.1);
+				border-radius: 5px;
+			    border-collapse: collapse;
+			}
+
+			#header td {
+			    display: flex;	
+			    align-items: center;
+			    justify-content: space-between;
+			    padding: 10px 20px;
+			}
+
+			#header td #logo {
+				width: 80px;
+			}
+
+			#header h1 {
+				font-family: 'Yanone Kaffeesatz';
+			    font-size: 2em;
+			    font-weight: normal;
+			}
+
+			#article {
+			    background-image: url(https://www.zinnes.com.br/img/fundo-email.jpg);
+			    background-size: cover;
+			    position: relative;
+			    color: white;
+			}
+
+			#article td#fundo {
+				padding: 40px 20px;
+				background: rgba(22, 159, 230, .8);
+			}
+
+			#article h2 {
+				margin-bottom: 25px;
+			}
+
+			#article p {
+				font-size: .9em;
+			    margin-bottom: 15px;
+    			line-height: 30px;
+    			cursor: pointer;
+			}
+
+			#article .botao {
+				background: #f6f7fb;
+    			color: black;
+    			margin: 25px auto 5px
+			}
+        </style>
+	</head>
+
+	<body>
+		<table style="width: 100%;max-width: 600px;background: white;box-shadow: 0 0 5px rgba(0,0,0,.1);border-radius: 5px;border-collapse: collapse;">
+			<tr id="header">
+				<td style="display: flex;align-items: center;justify-content: space-between;padding: 10px 20px; box-sizing: border-box;">
+					<img src="https://www.zinnes.com.br/img/logo.png" id="logo" alt="ZINNES" style="width: 80px; height: 68px;">
+
+					<h1 style="font-family: 'Yanone Kaffeesatz';font-size: 2em;font-weight: normal;">--TITULO--</h1>
+				</td>
+			</tr>
+
+			<tr id="article" style="background-image: url(https://www.zinnes.com.br/img/fundo-email.jpg);background-size: cover;position: relative;">
+				<td id="fundo" style="padding: 40px 20px;background: rgba(22, 159, 230, .8); box-sizing: border-box; color: white;">
+					<h2 style="margin-bottom: 25px; color: white;">Olá, </h2>
+
+					--MENSAGEM--
+				</td>
+			</tr>
+
+			<tr id="footer">
+				<td>
+					<a href="https://www.zinnes.com.br" class="botao" style="margin: 35px auto;display: block;padding: 8px 25px;border-radius: 5px;background: #2196F3;color: white;cursor: pointer;transition: .3s ease;box-sizing: border-box;font-size: .835em;font-weight: bold;box-shadow: inset 0 -2px 0 rgba(0,0,0,.2);text-decoration: none;width: 115px; box-sizing: border-box;">ZINNES</a> 
+				</td>
+			</tr>
+
+			<!-- <tr>
+				<td>
+					<ul id="redes" style="display: flex;justify-content: center;align-items: center;margin: 20px 0;list-style: none;">
+						<li style="margin: 0 10px;">
+							<a href="www.zinnes.com.br" style="color: white;text-decoration: none;"><i class="fab fa-facebook-f" style="-moz-osx-font-smoothing: grayscale;-webkit-font-smoothing: antialiased;display: flex;font-style: normal;font-variant: normal;text-rendering: auto;line-height: 1;font-family: Font Awesome\ 5 Brands;background: #2196F3;justify-content: center;align-items: center;width: 30px;height: 30px;border-radius: 5px;"></i></a>
+						</li>
+						<li style="margin: 0 10px;">
+							<a href="www.zinnes.com.br" style="color: white;text-decoration: none;"><i class="fab fa-instagram" style="-moz-osx-font-smoothing: grayscale;-webkit-font-smoothing: antialiased;display: flex;font-style: normal;font-variant: normal;text-rendering: auto;line-height: 1;font-family: Font Awesome\ 5 Brands;background: #2196F3;justify-content: center;align-items: center;width: 30px;height: 30px;border-radius: 5px;"></i></a>
+						</li>
+						<li style="margin: 0 10px;">
+							<a href="www.zinnes.com.br" style="color: white;text-decoration: none;"><i class="fab fa-twitter" style="-moz-osx-font-smoothing: grayscale;-webkit-font-smoothing: antialiased;display: flex;font-style: normal;font-variant: normal;text-rendering: auto;line-height: 1;font-family: Font Awesome\ 5 Brands;background: #2196F3;justify-content: center;align-items: center;width: 30px;height: 30px;border-radius: 5px;"></i></a>
+						</li>
+					</ul>
+				</td>
+			</tr> -->
+		</table>
+
+		<!-- <section id="email">
+			<header>
+				<img src="https://www.zinnes.com.br/img/logo.png" id="logo" alt="ZINNES">
+
+				<h1>--TITULO--</h1>
+			</header>
+
+			<article>
+				<div id="fundo"></div>
+				<h2>Olá,</h2>
+
+				--MENSAGEM--
+			</article>
+
+			<footer>
+				<a href='https://www.zinnes.com.br' class="botao">ACESSE</a> 
+
+				<ul id="redes">
+					<li>
+						<a href="www.zinnes.com.br"><i class="fab fa-facebook-f"></i></a>
+					</li>
+					<li>
+						<a href="www.zinnes.com.br"><i class="fab fa-instagram"></i></a>
+					</li>
+					<li>
+						<a href="www.zinnes.com.br"><i class="fab fa-twitter"></i></a>
+					</li>
+				</ul>
+			</footer>
+		</section> -->
+	</body>
+</html>

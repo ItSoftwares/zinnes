@@ -1,0 +1,491 @@
+/* 
+#169fe6
+#28282A
+#0B4352
+#555459
+#E2E2E2
+#B5446E
+#FCAA67
+#e95950
+*/
+
+#topo {
+    width: 100%;
+    background: #28282A;
+    z-index: 5;
+    position: relative;
+}
+
+#topo.transparente {
+	background: transparent;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+body.fixo #topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+body.fixo {
+    padding-top: 69px;
+}
+
+#topo *:not(i) {
+    font-family: Quicksand;
+}
+
+#topo-container {
+    width: 1000px;
+    margin: auto;
+    padding: 13px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	position: relative
+}
+
+#topo-container a {
+    color: white;
+    text-decoration: none;
+}
+
+#topo-container #logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+#topo-container #logo img {
+    width: 50px;
+    margin-right: 15px;
+}
+
+#topo-container #logo h3 {
+    font-family: Shadows into light;
+    font-size: 1.5em;
+}
+
+#topo-container .menu {
+    display: flex;
+    align-items: center;
+}
+
+#topo-container .menu > ul {
+    list-style: none;
+    display: flex;
+}
+
+#topo-container .menu > ul > li {
+    margin-left: 30px;
+    font-weight: bold;
+    font-size: 1.15em;
+	display: flex;
+    align-items: center;
+	position: relative;
+}
+
+#topo-container .menu > ul > li > a > i {
+    display: none
+}
+
+#topo-container .menu > ul > li:before {
+	content: "";
+	position: absolute;
+	bottom: -6px;
+	left: 0;
+	width: 0;
+	transition: .3s ease;
+	background: #2196F3;
+	height: 3px;
+	border-radius: 2px;
+}
+
+#topo-container .menu > ul > li:not(.no):hover:before {
+	width: 100%;
+}
+
+#topo-container .menu > ul > li.selecionado:before {
+	width: 100%;
+/*	background: #e95950;*/
+}
+
+#topo-container .menu.direita > ul {
+    margin-right: 20px;
+}
+
+#topo-container .menu i.icon {
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    transition: .3s ease;
+    opacity: .5;
+}
+
+#topo-container #header-foto-perfil > img, #topo-container #perfil-painel img {
+	width: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,.5);
+}
+
+#topo-container .menu *:not(.aberto) i.icon:hover {
+	opacity: 1;
+}
+
+#menu-toogle {
+    display: none;
+}
+
+#pesquisar {
+/*    margin-left: 15px;*/
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+    border-radius: 3px;
+    transition: .3s ease;
+}
+
+#pesquisar.aberto {
+/*    background: #555459;*/
+	background: rgba(0,0,0,.4) !important;
+}
+
+#pesquisar input {
+    width: 0;
+    opacity: 0;
+    transition: .3s ease width;
+    background: transparent;
+    color: white;
+}
+
+#pesquisar.aberto input {
+    width: 200px;
+    opacity: 1
+}
+
+#pesquisar.aberto i {
+    color: #28282a;
+}
+
+.flutuante {
+	position: absolute;
+	top: calc(100% + 30px);
+/*	left: 50%;*/
+/*	transform: translate(-50%, 0);*/
+	right: 0;
+	background: #555459;
+	width: 200px;
+	min-height: 100px;
+	border-radius: 3px;
+	z-index: 2;
+}
+
+.flutuante:before {
+	content: "";
+	position: absolute;
+	top: -14px;
+/*	left: 0;*/
+	right: 7px;
+	margin: auto;
+	width: 0;
+	border: 7px solid transparent;
+	border-bottom-color: #3b3b3e;
+}
+
+#perfil-painel {
+	display: none;
+}
+
+.flutuante:not(#perfil-painel) header, #perfil-painel header > a {
+	color: white;
+    display: flex;
+	border-radius: 3px;
+    align-items: center;
+    padding: 10px 20px;
+	background: rgba(0,0,0,.3);
+/*    justify-content: center;*/
+}
+
+#perfil-painel header > a{
+	display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.flutuante header h4 {
+	
+}
+
+#perfil-painel header p {
+	font-size: .8em;
+    color: rgba(255,255,255,.5);
+}
+
+#perfil-painel header i {
+	margin-right: 20px;
+}
+
+#perfil-painel header img {
+	margin-right: 20px;
+}
+
+#perfil-painel ul {
+	list-style: none;
+}
+
+#perfil-painel ul li {
+	border-top: 1px solid rgba(255,255,255,.2);
+	padding: 15px 20px;
+	width: 100%;
+	cursor: pointer;
+	font-weight: normal;
+	box-sizing: border-box;
+}
+
+#perfil-painel ul li i {
+	margin-right: 20px;
+}
+
+#icon-notificacao .notificacao-qtd {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 60%;
+    font-size: .6em;
+    background: #2196F3;
+    border-radius: 50px;
+    min-width: 14px;
+    text-align: center;
+    color: white;
+    padding: 2px;
+    cursor: default;
+}
+
+#notificacoes .img-loading {
+    margin: 20px auto !important;
+}
+
+#notificacoes {
+	width: 350px;
+	display: none;
+}
+
+#notificacoes header {
+	justify-content: center;
+}
+
+#notificacoes ul {
+	list-style: none;
+	overflow-y: auto;
+    max-height: 300px;
+    padding-bottom: 10px;
+}
+
+#notificacoes ul.nada {
+}
+
+#notificacoes .notificacao {
+	position: relative;
+}
+
+#notificacoes .notificacao.lido {
+	transition: .3s ease;
+	opacity: .7;
+}
+
+#notificacoes .notificacao.novo:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 5px;
+	height: calc(100% - 1px);
+	background: #2196F3;
+}
+
+#notificacoes .notificacao:hover {
+	opacity: 1;
+}
+
+#notificacoes .notificacao:not(.log) a {
+	display: flex;
+	align-items: flex-start;
+}
+
+#notificacoes .notificacao.log {
+	
+}
+
+#notificacoes .notificacao a {
+	padding: 20px 10px 10px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+	display: block;
+}
+
+#notificacoes .notificacao img {
+	width: 30px;
+	border-radius: 4px;
+	margin-right: 10px;
+}
+
+#notificacoes .notificacao h4 {
+	font-size: .9em;
+	margin-bottom: 5px;
+}
+
+#notificacoes .notificacao p {
+	font-size: .7em;
+	font-weight: normal;
+	opacity: .8;
+}
+
+#notificacoes .notificacao span.data {
+	position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: .55em;
+    font-weight: normal;
+    opacity: .5;
+}
+
+#notificacoes > p {
+    text-align: center;
+    /* margin-bottom: 10px; */
+    color: white;
+    opacity: .8;
+    font-style: italic;
+    padding: 10px;
+    background: rgba(0,0,0,.3);
+    width: 60%;
+    margin: 0 auto 10px;
+    border-radius: 5px;
+    font-size: .8em;
+    cursor: default;
+}
+
+/*==========================*/
+/*=========RODAPÉ===========*/
+/*==========================*/
+
+body > footer {
+/*    background: linear-gradient(#424242, #222);*/
+    background: #28282a;
+/*	padding-top: 30px;*/
+/*	border-top: 1px dashed rgba(255,255,255,.3);*/
+}
+
+body > footer *:not(i) {
+	font-family: Quicksand;
+}
+
+body > footer ul {
+	width: 1000px;
+	margin: auto;
+    padding: 30px 0;
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+
+body > footer ul li {
+	opacity: .5;
+	transition: .3s ease;
+	display: inline-block;
+	margin: 0 10px;
+}
+
+body > footer ul li a {
+	color: white;
+	text-decoration: none;
+	font-size: 1.1em;
+}
+
+body > footer ul li:hover {
+	opacity: 1;
+}
+
+body > footer > p {
+    text-align: center;
+    color: white;
+    font-size: .8em;
+	display: flex;
+	justify-content: space-between;
+	width: 1000px;
+	margin: auto;
+    margin-bottom: 30px;
+	opacity: .7;
+	display: none;
+}
+
+body > footer > div {
+    width: 1000px;
+    margin: auto;
+    border-top: 1px dashed rgba(255,255,255,.3);
+}
+
+body > footer #redes-sociais {
+    margin: 35px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    list-style: none;
+}
+
+body > footer #redes-sociais a {
+    width: 40px;
+    height: 40px;
+    color: white;
+    border-radius: 50%;
+/*    border: 1px solid white;*/
+    box-shadow: inset 0px 0px 0 1px white;
+/*    padding: 10px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: .6s ease;
+}
+
+body > footer #redes-sociais a:nth-child(1):hover {
+    box-shadow: inset 0px 0px 0 30px #3b5998;
+}
+
+body > footer #redes-sociais a:nth-child(2):hover {
+    box-shadow: inset 0px 0px 0 30px #00aced;
+}
+
+body > footer #redes-sociais a:nth-child(3):hover {
+    box-shadow: inset 0px 0px 0 30px #e95950;
+}
+
+body > footer > div > a {
+    margin: auto;
+    width: 350px;
+    display: flex;
+    color: white;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    font-size: .8em;
+/*    padding: 10px 0;*/
+    opacity: .75;
+    transition: .3s ease;
+	background: rgba(0,0,0,.2);
+    border-radius: 3px 3px 0 0;
+    padding: 10px 0;
+}
+
+body > footer > div > a:hover {
+    opacity: 1;
+/*    text-decoration: underline;*/
+}
+
+body > footer > div > a img {
+    width: 35px;
+    margin-left: 10px;
+    
+}

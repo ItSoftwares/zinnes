@@ -1,0 +1,367 @@
+body {
+	background: #f4f4f4;
+}
+
+.box-window *:not(i) {
+	font-family: Quicksand;
+}
+
+.box-window {
+	width: 1000px;
+    margin: auto;
+	display: flex;
+	/*align-items: flex-start;*/
+}
+
+#perfil-topo {
+	width: 100%;
+	background: linear-gradient(to right, #1E2439, #485786);
+	padding: 110px 0 60px;
+}
+
+#foto-perfil {
+	width: 150px;
+	border-radius: 50%;
+	margin-right: 40px;
+	margin-bottom: 10px;
+}
+
+#seguir, #dashboard {
+	width: 150px;
+	display: table;
+	/*background: #3b5998*/
+}
+
+#seguir.seguindo {
+	background: #8BC34A;
+}
+
+#seguir.deixar {
+    background: #e95950;
+}
+
+#dashboard {
+	margin-top: 10px;
+}
+
+#editar-perfil {
+    width: 150px;
+	display: table;
+	background: #3b5998;
+}
+
+#dados-perfil {
+	color: white;
+	position: relative;
+	width: 100%;
+}
+
+#dados-perfil h2 {
+	font-weight: normal;
+	margin-bottom: 20px;
+}
+
+#dados-perfil h2 span {
+    font-size: .75em;
+     font-style: italic; 
+    opacity: .7;
+}
+
+#dados-perfil #descricao {
+	padding-top: 10px;
+    margin-bottom: 50px;
+    font-size: .85em;
+    color: rgba(255,255,255,.7);
+    text-align: justify;
+    line-height: 20px;
+    min-height: 100px;
+}
+
+#links {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+#links a {
+	color: black;
+	text-decoration: none;
+	margin-left: 8px;
+}
+
+#links a i {
+	width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /*opacity: .6;*/
+	background: white;
+    transition: .3s ease;
+	box-shadow: 0px 0px 5px rgba(0,0,0,.5);
+}
+
+#links a:nth-child(1):hover i {
+	background: #00aced;
+	color: white;
+}
+
+#links a:nth-child(2):hover i {
+	background: #3b5998;
+	color: white;
+}
+
+#links a:nth-child(3):hover i {
+	background: #e95950;
+	color: white;
+}
+
+#links a:nth-child(4):hover i {
+	background: #c4302b;
+	color: white;
+}
+
+#links a:nth-child(5):hover i {
+	background: #2196F3;
+	color: white;
+}
+
+#links a span {
+	display: none;
+}
+
+/*==========================*/
+/*========PRINCIPAL=========*/
+/*==========================*/
+
+#main {
+	justify-content: space-between;
+    position: relative;
+}
+
+#navegacao {
+    position: absolute;
+    left: 0;
+    top: -70px;
+}
+
+#navegacao ul {
+    display: flex;
+    list-style: none;
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+
+#navegacao ul li {
+    width: 50px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.77);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+    cursor: pointer;
+	transition: .3s ease;
+}
+
+#navegacao ul li.selecionado {
+    background: white;
+    cursor: default;
+}
+
+#navegacao ul li:not(.selecionado):hover {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+#navegacao ul li i {
+    font-size: 20px;
+    opacity: .5;
+    transition: .3s ease;
+}
+
+#navegacao ul li.selecionado i {
+    color: #2196F3;
+    opacity: 1;
+}
+
+#navegacao ul li#icon-gostei.selecionado i {
+    color: #e95950;
+}
+
+#main #comentar {
+    margin-top: 25px
+}
+
+#main > *:not(#navegacao) > * {
+	padding: 30px;
+	background: white;
+	margin-top: -30px;
+	border-radius: 4px;
+	box-shadow: 0 2px 10px rgba(0,0,0,.3);
+	box-sizing: border-box;
+	margin-bottom: 40px;
+}
+
+#main article {
+	width: 68%
+}
+
+#main #lateral-direita {
+	width: 30%;
+}
+
+#patrocinio a {
+    width: 100%;
+    text-decoration: none;
+    font-size: .9em;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#patrocinio a.patreon {
+    background: #FB664E;
+}
+
+#patrocinio a.padrim {
+    background: #F89821;
+}
+
+#patrocinio a.apoia-se {
+    background: #CD4269;
+}
+
+#meus-likes h3 a, #ultimos-titulos h3 a {
+    opacity: .5;
+    font-size: .8em;
+    float: right;
+    color: black;
+    text-decoration: none;
+}
+
+#meus-likes h3 a:hover, #ultimos-titulos h3 a:hover {
+    text-decoration: underline;
+}
+
+#meus-likes ul, #ultimos-titulos ul {
+	list-style: none;
+}
+
+li.lista-pequena {
+    margin-top: 20px;
+}
+
+li.lista-pequena a {
+	display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+    transition: .3s ease;
+}
+
+li.lista-pequena a:hover {
+    box-shadow: inset 2px 0 0 #2196F3;
+    padding-left: 10px;
+}
+
+li.lista-pequena:not(:last-child) {
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #e2e2e2;
+}
+
+li.lista-pequena img {
+    width: 40px;
+    margin-right: 10px;
+	border-radius: 3px;
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+
+li.lista-pequena h4 {
+    margin-bottom: 5px;
+}
+
+li.lista-pequena p {
+    color: #ccc;
+    font-size: .8em
+}
+
+/*==========================*/
+/*==========LISTAS==========*/
+/*==========================*/
+
+article > * > ul {
+	list-style: none;
+	display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+}
+
+article > * > h3 span {
+    /*margin-left: 10px;*/
+    font-size: .9em;
+    color: #aaa;
+}
+
+li.lista-grande {
+    margin-top: 20px;
+    width: 46%;
+    transition: .3s ease;
+    padding: 10px;
+    border-left: 1px dashed #e2e2e2;
+    position: relative;
+}
+
+li.lista-grande a {
+	display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+    transition: .3s ease;
+}
+
+li.lista-grande:hover {
+	/*border-left: 3px solid #2196F3;*/
+    box-shadow: inset 3px 0 0 #2196F3;
+	border-color: transparent;
+	padding-left: 15px;
+	margin-right: -5px;
+}
+
+li.lista-grande img {
+	width: 80px;
+    margin-right: 10px;
+    /* padding: 3px; */
+    box-shadow: 0 0 4px rgba(0,0,0,.3);
+    border-radius: 3px;
+}
+
+li.lista-grande h4 {
+    margin-bottom: 5px;
+}
+
+li.lista-grande p {
+    color: #aaa;
+    font-size: .8em
+}
+
+li.lista-grande p b, li.lista-pequena p b {
+    color: #565656;
+}
+
+li.capitulo p:last-child, li.gostei p:last-child {
+    font-style: italic;
+    margin-top: 5px;
+}
+
+li.capitulo, li.gostei {
+    width: 100%;
+}
+
+.lista-grande .lado-a-lado {
+	margin: 25px 0 0;
+}
