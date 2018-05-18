@@ -430,7 +430,8 @@ $("#enviar-comic").submit(function(e) {
     
     $.each(temp, function(i, value) {
         if (i=="imagens" || i=="ordem") data.append(i, JSON.stringify(value));
-        else data.append(i, value);
+        else 
+        	data.append(i, value);
     });
     
     result = atualizarComic(data, $("#cabecalho button"));
@@ -458,7 +459,7 @@ function atualizarComic(data, botoes, mensagemExito) {
     botoes.attr("disabled", true);
     
     chamarPopupLoading("Aguarde enquanto atualizamos o capítulo!");
-    
+
     $.ajax({
         type: "post",
         url: "php/handler/tituloHandler.php",
@@ -521,7 +522,7 @@ function atualizarComic(data, botoes, mensagemExito) {
         beforeSend: function() {
             var percentVal = 0;
             $(".barra-progresso").width(percentVal+"%");
-            // console.log("iniciou");
+            console.log(data);
         },
         xhr: function() {
             var xhr = new window.XMLHttpRequest();
