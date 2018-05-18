@@ -1,6 +1,21 @@
 <pre>
 <?
+error_reporting(E_ALL);
 require "../database/conexao.php";
+require "../classes/usuario.class.php";
+require "../vendor/autoload.php";
+
+$usuario = new usuario();
+
+$usuario->usuario = 'izac le ninja';
+$usuario->sexo = 0;
+
+var_dump($usuario->toArray());
+
+$result = $usuario->emailModerador();
+
+var_dump($result);
+
 // require "../util/listarArquivos.php";
 
 // $pastas = listar(realpath(dirname(__DIR__, 2).DIRECTORY_SEPARATOR."servidor".DIRECTORY_SEPARATOR."titulos".DIRECTORY_SEPARATOR."comics".DIRECTORY_SEPARATOR))['nomes'];
@@ -37,10 +52,6 @@ require "../database/conexao.php";
 // DBdelete('avaliar_titulo a1 INNER JOIN avaliar_titulo a2', 'where a1.data < a2.data and a1.id_usuario = a2.id_usuario and a1.id_titulo = a2.id_titulo');
 // DBexecute('delete a1 from avaliar_titulo a1 INNER JOIN avaliar_titulo a2', 'where a1.data < a2.data and a1.id_usuario = a2.id_usuario and a1.id_titulo = a2.id_titulo');
 // var_dump(DBexecute('rollback'));
-
-$likes = DBselect('comentario_usuario c inner join usuario u on c.para = u.id', '', 'para, nickname');
-
-var_dump($likes);
 
 exit;
 ?>

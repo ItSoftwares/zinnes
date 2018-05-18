@@ -1,6 +1,6 @@
 <?
-date_default_timezone_set('America/Sao_Paulo');
-
+// date_default_timezone_set('America/Sao_Paulo');
+error_reporting(E_ALL);
 class Usuario {
     private $props = []; 
     public $valores_atualizar = array();
@@ -322,10 +322,10 @@ class Usuario {
         $mail->SMTPDebug = 0;                            // Enable verbose debug output
 
         $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'mx1.hostinger.com.br';  // Specify main and backup SMTP servers
+        $mail->Host = 'smtp.hostinger.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
         $mail->Username = 'suporte@zinnes.com.br';                 // SMTP username
-        $mail->Password = 'teste123';                           // SMTP password
+        $mail->Password = 'zinnes123';                           // SMTP password
         //$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587;                                  // TCP port to connect to
 
@@ -338,7 +338,7 @@ class Usuario {
         $mail->CharSet = 'UTF-8';
 
         if (!$mail->send()) {
-            //erro
+            // erro
             // echo $mail->ErrorInfo;
             return 2;
         } else {
@@ -553,6 +553,7 @@ class Usuario {
         $mensagem = str_replace("--TITULO--", "Email Sistema", $mensagem);
         $mensagem = str_replace("--MENSAGEM--", $this->mensagem, $mensagem);
 
+        // echo "teste";
         $mail = new PHPMailer;
 
         $mail->SMTPOptions = array(
@@ -569,27 +570,28 @@ class Usuario {
             $mail->addCC($value['email'], $value['nome']);
         }
 
-        $mail->SMTPDebug = 0;                            // Enable verbose debug output
+        $mail->SMTPDebug = 0;							// Enable verbose debug output
 
-        $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'mx1.hostinger.com.br';  // Specify main and backup SMTP servers
-        $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'suporte@zinnes.com.br';                 // SMTP username
-        $mail->Password = 'teste123';                           // SMTP password
-        //$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 587;                                  // TCP port to connect to
+        $mail->isSMTP();                                // Set mailer to use SMTP
+        $mail->Host = 'mx1.hostinger.com.br';			// Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;							// Enable SMTP authentication
+        $mail->Username = 'suporte@zinnes.com.br';		// SMTP username
+        $mail->Password = 'zinnes123';					// SMTP password
+        //$mail->SMTPSecure = 'tls';						// Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 587;								// TCP port to connect to
 
         $mail->setFrom('suporte@zinnes.com.br', 'ZINNES');
 
         $mail->DEBUG = 0;
-        $mail->Subject = $titulo.' - ZINNES';
+        $mail->Subject = 'Email da moderação - ZINNES';
         $mail->isHTML(true);
         $mail->Body = $mensagem;
         $mail->CharSet = 'UTF-8';
 
         if (!$mail->send()) {
             //erro
-            return array('estado'=>2, 'mensagem'=>"Erro ao enviar email!");
+            
+            return array('estado'=>2, 'mensagem'=>"Erro ao enviar email!", 'erro'=>$mail->ErrorInfo);
         } else {
             $mail->ClearAllRecipients();
             

@@ -1,6 +1,8 @@
 RewriteEngine On
 #RewriteBase /
 
+#php_flag log_errors on
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
