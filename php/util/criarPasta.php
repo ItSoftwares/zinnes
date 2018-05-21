@@ -3,55 +3,79 @@
 error_reporting(E_ALL);
 require "../database/conexao.php";
 require "../classes/usuario.class.php";
+require "../classes/serie.class.php";
+require "../classes/titulo.class.php";
 require "../vendor/autoload.php";
 
-$usuario = new usuario();
+$result = DBselect('avaliar_titulo', 'group by id_usuario, id_titulo having count(*) > 1', 'id_titulo, id_usuario, count(*)');
+var_dump($result); exit;
 
-$usuario->usuario = 'izac le ninja';
-$usuario->sexo = 0;
+// $usuario = new usuario();
 
-var_dump($usuario->toArray());
+// $usuario->usuario = 'izac le ninja';
+// $usuario->sexo = 0;
 
-$result = $usuario->emailModerador();
+// var_dump($usuario->toArray());
 
-var_dump($result);
+// $result = $usuario->emailModerador();
 
-// require "../util/listarArquivos.php";
+// var_dump($result);
 
-// $pastas = listar(realpath(dirname(__DIR__, 2).DIRECTORY_SEPARATOR."servidor".DIRECTORY_SEPARATOR."titulos".DIRECTORY_SEPARATOR."comics".DIRECTORY_SEPARATOR))['nomes'];
+require "../util/listarArquivos.php";
 
-// $nomes = $pastas;
+$pastas = listar(realpath(dirname(__DIR__, 2).DIRECTORY_SEPARATOR."servidor".DIRECTORY_SEPARATOR."titulos".DIRECTORY_SEPARATOR."comics".DIRECTORY_SEPARATOR))['nomes'];
 
-// $titulos = DBselect('titulo', '', 'id');
+$nomes = $pastas;
+
+$titulos = DBselect('titulo t', 'order by t.id DESC', 't.id, id_projeto');
+$projetos = DBselect('projeto p', 'order by p.id DESC', 'p.id');
+
+// var_dump($titulos);
+// $temp = [];
+// foreach ($projetos as $key => $value) {
+// 	array_push($temp, intval($value['id']));
+// }
+// $projetos = $temp;
 
 // $temp = [];
 // foreach ($titulos as $key => $value) {
-// 	array_push($temp, intval($value['id']));
-// }
-// $titulos = $temp;
-
-// $temp = [];
-// foreach ($pastas as $key => $value) {
-// 	if (!in_array($key, $titulos)) array_push($temp, $key);
+// 	if (!in_array($value['id_projeto'], $projetos)) array_push($temp, $value['id_projeto']);
 // }
 
-// $pastas = $temp;
+// var_dump($temp); exit;
 
-// var_dump($pastas);
+// $serie = new Serie();
+// $serie->id = 26;
+// $serie->tipo = 1;
 
-// $diretorio = realpath(dirname(__DIR__, 2).DIRECTORY_SEPARATOR."servidor".DIRECTORY_SEPARATOR."titulos".DIRECTORY_SEPARATOR."comics".DIRECTORY_SEPARATOR.'81'.DIRECTORY_SEPARATOR);
-// echo $diretorio."<br>";
-// rmdir_recursive($diretorio);	
+// $serie->excluir();
+
+// exit; ////////////////////////////////////////////
+
+$temp = [];
+foreach ($titulos as $key => $value) {
+	array_push($temp, intval($value['id']));
+}
+$titulos = $temp;
+
+$temp = [];
+foreach ($pastas as $key => $value) {
+	if (!in_array($key, $titulos)) array_push($temp, $key);
+}
+
+$pastas = $temp;
+
+var_dump($pastas); exit;
+
+$diretorio = realpath(dirname(__DIR__, 2).DIRECTORY_SEPARATOR."servidor".DIRECTORY_SEPARATOR."titulos".DIRECTORY_SEPARATOR."comics".DIRECTORY_SEPARATOR.'104'.DIRECTORY_SEPARATOR);
+echo $diretorio."<br>";
+rmdir_recursive($diretorio);	
 
 // foreach ($pastas as $k => $value1) {
 // 	$diretorio = realpath(dirname(__DIR__, 2).DIRECTORY_SEPARATOR."servidor".DIRECTORY_SEPARATOR."titulos".DIRECTORY_SEPARATOR."comics".DIRECTORY_SEPARATOR.$value1.DIRECTORY_SEPARATOR);
 // 	echo $diretorio."<br>";
 // 	rmdir_recursive($diretorio);	
 // }
-
-// DBdelete('avaliar_titulo a1 INNER JOIN avaliar_titulo a2', 'where a1.data < a2.data and a1.id_usuario = a2.id_usuario and a1.id_titulo = a2.id_titulo');
-// DBexecute('delete a1 from avaliar_titulo a1 INNER JOIN avaliar_titulo a2', 'where a1.data < a2.data and a1.id_usuario = a2.id_usuario and a1.id_titulo = a2.id_titulo');
-// var_dump(DBexecute('rollback'));
 
 exit;
 ?>

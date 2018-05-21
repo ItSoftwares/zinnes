@@ -155,7 +155,7 @@ body {
 }
 
 #navegacao ul li {
-    width: 50px;
+    min-width: 50px;
     height: 40px;
     background: rgba(255, 255, 255, 0.77);
     display: flex;
@@ -169,6 +169,7 @@ body {
 #navegacao ul li.selecionado {
     background: white;
     cursor: default;
+    padding: 0 15px;
 }
 
 #navegacao ul li:not(.selecionado):hover {
@@ -181,12 +182,23 @@ body {
     transition: .3s ease;
 }
 
+#navegacao ul li span {
+    margin-left: 5px;
+    font-weight: bold;
+    color: #2196F3;
+    display: none;
+}
+
+#navegacao ul li.selecionado span {
+	display: block;
+}
+
 #navegacao ul li.selecionado i {
     color: #2196F3;
     opacity: 1;
 }
 
-#navegacao ul li#icon-gostei.selecionado i {
+#navegacao ul li#icon-gostei.selecionado i, #navegacao ul li#icon-gostei.selecionado span {
     color: #e95950;
 }
 

@@ -9,12 +9,10 @@ session_start();
 
 $menu_style = "transparente";
 
-// var_dump($_SESSION); exit;
-
 if ($_GET['nickname']=="" and !isset($_SESSION['logado'])) {
     $_SESSION['erro_msg'] = "Faça login ou cadastre-se para acessar sua conta!";
     session_write_close();
-    header("location: /");
+    header("location: ");
 }
 
 if ($_GET['nickname']!="") {
@@ -134,11 +132,11 @@ if ($_GET['seguindo']!="") {
 		<div class="box-window" id="main">
             <div id="navegacao">
                 <ul>
-                    <li id="icon-comentarios" class="<? echo !$seguindo?"selecionado":"" ?>" title="Comentarios"><i class="fas fa-comment"></i></li>
-                    <li id="icon-projetos" title="Series"><i class="fas fa-book"></i></li>
-                    <li id="icon-titulos" title="Ultimos capítulos adicionados"><i class="fas fa-newspaper"></i></li>
-                    <li id="icon-favoritos" class="<? echo $seguindo?"selecionado":"" ?>" title="Favoritos"><i class="fas fa-bookmark"></i></li>
-                    <li id="icon-gostei" title="Gostei"><i class="fas fa-heart"></i></li>
+                    <li id="icon-comentarios" class="<? echo !$seguindo?"selecionado":"" ?>" title="Comentarios"><i class="fas fa-comment"></i><span>Mural</span></li>
+                    <li id="icon-projetos" title="Series"><i class="fas fa-book"></i><span>Series</span></li>
+                    <li id="icon-titulos" title="Ultimos capítulos adicionados"><i class="fas fa-newspaper"></i><span>Novos</span></li>
+                    <li id="icon-favoritos" class="<? echo $seguindo?"selecionado":"" ?>" title="Favoritos"><i class="fas fa-bookmark"></i><span>Favoritos</span></li>
+                    <li id="icon-gostei" title="Gostei"><i class="fas fa-heart"></i><span>Gostei</span></li>
                     <!-- <li id="icon-seguidores" title="Seguidores"><i class="fas fa-heart"></i></li> -->
                 </ul>
             </div>

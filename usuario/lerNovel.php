@@ -147,7 +147,7 @@ $capitulos = $temp;
                         if ($cap['id']==$titulo->id) $titulo->numero = $cap['numero'];
                         
                         if ($cap['id']<$titulo->id) $anterior = $cap;
-                        if ($cap['id']>$titulo->id) $proximo = $cap;
+                        if ($cap['id']>$titulo->id and $proximo==null) $proximo = $cap;
                     ?>
                     <li class="lista-pequena">
                         <a href="lerNovel/<? echo $cap['id']; ?>">

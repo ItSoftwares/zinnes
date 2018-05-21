@@ -24,6 +24,7 @@ class Titulo {
                 $this->unsetAtributo("ordem");
             }
 
+        	// var_dump(array_keys($this->toArray())); exit;
             if ($arquivos!=null and isset($arquivos['thumb_titulo']) and is_uploaded_file($arquivos['thumb_titulo']['tmp_name'])) {
                 $this->thumb_titulo = $this->mudarFoto($arquivos['thumb_titulo'], $this->larguraImagem, $this->alturaImagem);
                 $this->unsetAtributo('alturaImagem');
@@ -94,10 +95,12 @@ class Titulo {
             // var_dump($carregar); exit;
             $this->fromArray($carregar[0]);
         }
-
+        
         $dirname = realpath("../..".DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'servidor'.DIRECTORY_SEPARATOR.'titulos'.DIRECTORY_SEPARATOR;
         
-        if ($this->thumb_titulo!=null || $this->thumb_titulo!="") unlink($dirname."thumbs".DIRECTORY_SEPARATOR.$this->thumb_titulo);
+        if ($this->thumb_titulo!=null || $this->thumb_titulo!="" and is_file($dirname."thumbs".DIRECTORY_SEPARATOR.$this->thumb_titulo)) {
+        	unlink($dirname."thumbs".DIRECTORY_SEPARATOR.$this->thumb_titulo);
+        }
 
         if ($tipo==1) {
             $arquivos = listar($dirname);
@@ -234,9 +237,10 @@ class Titulo {
 
     public function mudarFoto($imagem, $w, $h) {
         error_reporting(E_ERROR | E_PARSE);
+        // echo $this->id;
         // var_dump($imagem); exit;
         $antiga = null;
-        if ($this->estaDeclarado("id")) $antiga = DBselect("titulo", "where id={$this->id}", "thumb_titulo");
+        if ($this->estaDeclarado("id") and $this->id!=null and $this->id!="" and isset($this->id)) $antiga = DBselect("titulo", "where id={$this->id}", "thumb_titulo");
         if (count($antiga)>0) $antiga = $antiga[0]['thumb_titulo'];
         
         $dirname = realpath("../..".DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'servidor'.DIRECTORY_SEPARATOR.'titulos'.DIRECTORY_SEPARATOR.'thumbs'.DIRECTORY_SEPARATOR;
@@ -297,12 +301,16 @@ class Titulo {
         $dirname = realpath("../..".DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'servidor'.DIRECTORY_SEPARATOR.'titulos'.DIRECTORY_SEPARATOR.'comics'.DIRECTORY_SEPARATOR.$this->id.DIRECTORY_SEPARATOR;
         
         unlink($dirname.$this->apagar);
+
+        $nomes = [];
         
         foreach($this->ordem as $numero => $nome) {
             if ($numero<$this->num) continue;
             rename($dirname.$nome, $dirname."{$numero}-".time().".jpg");
             $nomes[$numero] = "{$numero}-".time().".jpg";
         }
+
+        // $nomes = $nomes==null?[]:$nomes;
         
         return array('estado'=>1, 'nomes'=>$nomes);
     }

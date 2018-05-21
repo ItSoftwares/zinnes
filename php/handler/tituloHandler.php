@@ -9,7 +9,7 @@ require "../vendor/autoload.php";
 if (isset($_POST)) {
     if (!isset($_SESSION)) session_start();
     $dados = $_POST;
-	// var_dump($_POST); exit;
+    // var_dump(array_keys($dados)); exit;
     $arquivos = $_FILES;
     $funcao = $dados['funcao']; unset($dados['funcao']);
     $tipo = isset($dados['tipo'])?$dados['tipo']:0; unset($dados['tipo']);

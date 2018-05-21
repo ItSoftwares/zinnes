@@ -196,6 +196,12 @@ $("#form-serie form").submit(function(e) {
     e.preventDefault();
     
     data = formToArray($(this).serializeArray());
+
+    if (data.id_genero==0) {
+    	chamarPopupInfo('Escolha um gênero válido!');
+    	$("[name=id_genero]").focus();
+    	return;
+    }
     
     //gerar tags
     data.tags = tags.join("__");

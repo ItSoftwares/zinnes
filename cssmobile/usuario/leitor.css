@@ -342,7 +342,7 @@ li.lista-pequena p {
 #menu-atalhos a p {
     box-sizing: border-box;
     padding: 5px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 #menu-atalhos #proximo {

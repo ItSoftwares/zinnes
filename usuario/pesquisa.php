@@ -82,7 +82,7 @@ if (isset($_SESSION['moderador'])) {
             <a href="" class="botao linha"><i class="fa fa-angle-left"></i> Inicio</a>
        
             <section id="pesquisa">
-                <h2>Resultados</h2>
+                <h2>Resultados (<? echo $quantidade ?>)</h2>
                 
                 <div class="input normal">
                     <input type="text" placeholder="Digite sua pesquisa" value="<? echo $pesquisa ?>">

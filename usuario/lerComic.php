@@ -156,7 +156,7 @@ function ordenacao($a, $b) {
                         if ($cap['id']==$titulo->id) $titulo->numero = $cap['numero'];
                         
                         if ($cap['id']<$titulo->id) $anterior = $cap;
-                        if ($cap['id']>$titulo->id) $proximo = $cap;
+                        if ($cap['id']>$titulo->id and $proximo==null) $proximo = $cap;
                     ?>
                     <li class="lista-pequena">
                         <a href="lerComic/<? echo $cap['id']; ?>">

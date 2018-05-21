@@ -45,6 +45,7 @@ function removerCaracteres($str) {
 }
 
 function rmdir_recursive($dir) {
+	if (!is_dir($dir) and !is_file($dir)) return;
     foreach(scandir($dir) as $file) {
         if ('.' === $file || '..' === $file) continue;
         if (is_dir("$dir/$file")) rmdir_recursive("$dir/$file");

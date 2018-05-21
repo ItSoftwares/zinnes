@@ -196,6 +196,10 @@ body {
     transition: .3s ease;
 }
 
+#navegacao ul li span {
+	display: none;
+}
+
 #navegacao ul li.selecionado i {
     color: #2196F3;
     opacity: 1;

@@ -184,6 +184,7 @@ $(document).on("click", ".excluir", function() {
     temp.ordem = ordemAtual;
     temp.numero = num;
     
+    console.log(temp);
     
     $.each(temp, function(i, value) {
         if (i=="ordem") data.append(i, JSON.stringify(value));
@@ -191,6 +192,10 @@ $(document).on("click", ".excluir", function() {
     });
     
     atualizarComic(data, $(this), 1);
+
+    if (qtd==0) {
+    	$("li.sem-arquivos").show();
+    }
 });
 
 $(document).on("click", ".subir", function() {
@@ -430,8 +435,7 @@ $("#enviar-comic").submit(function(e) {
     
     $.each(temp, function(i, value) {
         if (i=="imagens" || i=="ordem") data.append(i, JSON.stringify(value));
-        else 
-        	data.append(i, value);
+        else data.append(i, value);
     });
     
     result = atualizarComic(data, $("#cabecalho button"));
@@ -440,15 +444,18 @@ $("#enviar-comic").submit(function(e) {
 });
 
 function atualizarComic(data, botoes, mensagemExito) {
-    if (qtd==0) {
-        chamarPopupInfo("Envie pelo menos 3 páginas!");
-        return 0;
-    }
-    
-    if ($("#titulo").val().length==0) {
-        chamarPopupInfo("Informe um título!");
-        $("#titulo").focus();
-        return 0;
+	// console.log(data);
+    if (data.get('funcao')!="apagarImagem") {
+    	if (qtd==0) {
+	        chamarPopupInfo("Envie pelo menos 3 páginas!");
+	        return 0;
+	    }
+	    
+	    if ($("#titulo").val().length==0) {
+	        chamarPopupInfo("Informe um título!");
+	        $("#titulo").focus();
+	        return 0;
+	    }
     }
 
     data.append("id_usuario", serie.id_usuario);
@@ -459,7 +466,7 @@ function atualizarComic(data, botoes, mensagemExito) {
     botoes.attr("disabled", true);
     
     chamarPopupLoading("Aguarde enquanto atualizamos o capítulo!");
-
+    
     $.ajax({
         type: "post",
         url: "php/handler/tituloHandler.php",
@@ -477,8 +484,10 @@ function atualizarComic(data, botoes, mensagemExito) {
                 });
                 
                 $.each(result.nomes, function(i, value) {
-                    $("li.arquivo[data-numero="+i+"]").attr("data-nome", value);
-                    $("li.arquivo[data-numero="+i+"] .nome").text(value);
+                	nome = value;
+                	nome = nome.indexOf(".jpg")==-1?nome+".jpg":nome;
+                    $("li.arquivo[data-numero="+i+"]").attr("data-nome", nome);
+                    $("li.arquivo[data-numero="+i+"] .nome").text(nome);
                 });
                 $("li.arquivo .estado").text("Postada");
                 $("li.arquivo").removeClass("pendente").addClass('postada');
@@ -497,6 +506,10 @@ function atualizarComic(data, botoes, mensagemExito) {
                     comic.rascunho = 0;
                 } else if (data.get("funcao")=="novo") {
                 	comic.rascunho = 1;
+                }
+
+                if (qtd==0) {
+                	$("li.sem-arquivos").show();
                 }
                 
                 reorganizarArquivos();
@@ -522,7 +535,7 @@ function atualizarComic(data, botoes, mensagemExito) {
         beforeSend: function() {
             var percentVal = 0;
             $(".barra-progresso").width(percentVal+"%");
-            console.log(data);
+            // console.log("iniciou");
         },
         xhr: function() {
             var xhr = new window.XMLHttpRequest();

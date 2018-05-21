@@ -65,6 +65,7 @@ class serie {
         if ($this->thumb_projeto!=null || $this->thumb_projeto!="") unlink($dirname."thumbs".DIRECTORY_SEPARATOR.$this->thumb_projeto);
         if ($this->banner_projeto!=null || $this->banner_projeto!="") unlink($dirname."banners".DIRECTORY_SEPARATOR.$this->banner_projeto);
 
+        DBdelete("titulo", "where id_projeto = {$this->id}");
         DBdelete("projeto", "where id={$this->id}");
         DBdelete("seguir_projeto", "where id_projeto={$this->id}");
 
