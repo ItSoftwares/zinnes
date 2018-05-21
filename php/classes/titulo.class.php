@@ -164,7 +164,8 @@ class Titulo {
         if (!$sigo) {
             $result = DBselect('titulo t INNER JOIN projeto p ON t.id_projeto = p.id', "where id_projeto in (select id from projeto where id_usuario={$id}) and rascunho=0 order by data DESC limit 10", "t.*, p.nome as serie, p.tipo");
         } else {
-            $result = DBselect('titulo t INNER JOIN avaliar_titulo a ON t.id = a.id_titulo INNER JOIN projeto p ON t.id_projeto = p.id', "where id_projeto in (select id from projeto where id_usuario={$id}) and rascunho=0 order by data DESC limit 50", "t.*, p.nome as serie, p.tipo");
+            // $result = DBselect('titulo t INNER JOIN avaliar_titulo a ON t.id = a.id_titulo INNER JOIN projeto p ON t.id_projeto = p.id', "where id_projeto in (select id from projeto where id_usuario={$id}) and rascunho=0 order by data DESC limit 50", "t.*, p.nome as serie, p.tipo");
+            $result = DBselect('avaliar_titulo a INNER JOIN titulo t ON a.id_titulo = t.id INNER JOIN projeto p ON p.id = t.id_projeto', "where a.id_usuario={$id} and rascunho=0 order by data DESC limit 50", "t.*, p.nome as serie, p.tipo");
         }
         
         

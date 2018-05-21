@@ -7,9 +7,11 @@ if ($busca=="") {
 	exit;
 }
 
-$comentarios = DBselect("comentario_titulo c INNER JOIN titulo t ON c.id_titulo = t.id INNER JOIN projeto p ON t.id_projeto = p.id INNER JOIN usuario u ON u.id = p.id_usuario", "where c.texto LIKE '%{$busca}%' order by data DESC limit 50", "c.*, p.tipo, t.nome as titulo, u.nickname");
+$comentarios = DBselect("comentario_titulo c INNER JOIN titulo t ON c.id_titulo = t.id INNER JOIN projeto p ON t.id_projeto = p.id INNER JOIN usuario u ON u.id = c.id_usuario", "where c.texto LIKE '%{$busca}%' order by c.data DESC limit 50", "c.*, p.tipo, t.nome as titulo, u.nickname");
 
-if (!isset($comentarios)) $comentarios = [];
+// var_dump($comentarios);
+
+if (count($comentarios)==0) $comentarios = [];
 
 foreach ($comentarios as $key => $value) {
 ?>
@@ -30,3 +32,7 @@ foreach ($comentarios as $key => $value) {
 
 if (count($comentarios)==0) echo "<p class='aviso'>Nenhum resultado para '{$busca}'</p>";
 ?>
+
+<script type="text/javascript">
+	var comentarios = <? echo json_encode($comentarios); ?>;
+</script>

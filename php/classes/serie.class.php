@@ -80,7 +80,7 @@ class serie {
 
         (select COUNT(id_titulo) from avaliar_titulo where id_titulo in (select id from titulo where id_projeto=p.id)) gosteis,
         
-        (select COUNT(id) from titulo t where t.id_projeto = p.id) capitulos,
+        (select COUNT(id) from titulo t where t.id_projeto = p.id and rascunho=0) capitulos,
 
         (select SUM(visualizacoes) from titulo where id_projeto=p.id) visualizacoes");
         

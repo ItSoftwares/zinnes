@@ -239,7 +239,7 @@ $("#comentar form").submit(function(e) {
     
     data = formToArray($(this).serializeArray());
     
-    data.id = titulo.id;
+    data.id_titulo = titulo.id;
     data.id_usuario = usuario.id;
     if ($("#comentar [name=id_referencia]").val()=="") delete data.id_referencia;
     if ($("#comentar [name=id]").val()=="") delete data.id;

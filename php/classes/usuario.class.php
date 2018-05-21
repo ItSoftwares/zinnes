@@ -1,6 +1,5 @@
 <?
 // date_default_timezone_set('America/Sao_Paulo');
-error_reporting(E_ALL);
 class Usuario {
     private $props = []; 
     public $valores_atualizar = array();

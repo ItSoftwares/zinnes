@@ -42,10 +42,10 @@ if ($_GET['seguindo']!="") {
 	<base href="https://<? echo $_SERVER['SERVER_NAME']; ?>/">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/usuario/perfil.css" media="(min-width: 1000px)">
+	<link rel="stylesheet" type="text/css" href="css/usuario/perfil.css?<? echo time() ?>" media="(min-width: 1000px)">
 	<link rel="stylesheet" type="text/css" href="css/geral/comentarios.css" media="(min-width: 1000px)">
 	<link rel="stylesheet" type="text/css" href="css/geral/geral.css" media="(min-width: 1000px)">
-	<link rel="stylesheet" type="text/css" href="cssmobile/usuario/perfil.css" media="(max-width: 999px)">
+	<link rel="stylesheet" type="text/css" href="cssmobile/usuario/perfil.css?<? echo time() ?>" media="(max-width: 999px)">
     <link rel="stylesheet" type="text/css" href="cssmobile/geral/geral.css" media="(max-width: 999px)">
     <link rel="stylesheet" type="text/css" href="cssmobile/geral/comentarios.css" media="(max-width: 999px)">
 	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -67,7 +67,7 @@ if ($_GET['seguindo']!="") {
         $usuario_perfil = new Usuario($tempUsuario);
     }
 
-    $qtd_gosteis = DBselect("avaliar_titulo", "where id_titulo in (select id from titulo where id_projeto in (select id from projeto where id_usuario = {$usuario_perfil->id}))", "count(id_usuario) as qtd")[0]['qtd'];
+    $qtd_gosteis = DBselect("avaliar_titulo", "where id_usuario = {$usuario_perfil->id}", "count(*) as qtd")[0]['qtd'];
 
     $qtd_seguidores = DBselect("seguir_projeto", "where id_projeto in (select id from projeto where id_usuario={$usuario_perfil->id})", "count(id_usuario) as qtd")[0]['qtd'];
 
@@ -328,6 +328,7 @@ if ($_GET['seguindo']!="") {
 <script type="text/javascript">
 	var usuario_perfil = <? echo json_encode($usuario_perfil->toArray()); ?>;
 	var tipoUsuario = <? echo $_SESSION['tipo_usuario']; ?>;
+	var qtd_gosteis = <? echo $qtd_gosteis; ?>;
 </script>
 <script src="js/usuario/perfil.js?<? echo time(); ?>" async></script>
 

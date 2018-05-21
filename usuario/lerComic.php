@@ -44,7 +44,7 @@ if ($_GET['id']!="") {
     exit;
 }
 
-$capitulos = DBselect("titulo t CROSS JOIN (SELECT @cnt := 0) n", "where id_projeto={$serie->id} ORDER BY id ASC", "id, thumb_titulo, nome, (@cnt := @cnt + 1) AS numero");
+$capitulos = DBselect("titulo t CROSS JOIN (SELECT @cnt := 0) n", "where id_projeto={$serie->id} and rascunho=0 ORDER BY id ASC", "id, thumb_titulo, nome, (@cnt := @cnt + 1) AS numero");
 
 $temp = [];
 foreach($capitulos as $cap) {

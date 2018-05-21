@@ -13,7 +13,17 @@ if ($sigo) {
 	foreach($series as $value) { ?>
 	<li class="molde lista-grande favorito">
 		<a href="/serie/<? echo $value['id']; ?>">
-	        <img src="https://<? echo $_SERVER['SERVER_NAME']; ?>/img/projeto.jpg">
+	         <?
+			if ($value['thumb_projeto']==null) {
+			?>
+            <img src="/img/sem-foto.png">
+            <?
+			} else {
+            ?>
+            <img src="/servidor/projetos/thumbs/<? echo $value['thumb_projeto']; ?>">
+            <?
+			}
+            ?>
 	        <div>
 	            <h4><? echo substr($value['nome'], 0, 20); ?></h4>
 	            <p>do autor <b><? echo $value['autor']; ?></b></p>
