@@ -310,7 +310,7 @@ function pegarComentarios(ultimoIdComentarios) {
     ultimoIdComentarios = ultimoIdComentarios || 0;
    // $("#notificacoes ul").removeClass();
     data = {funcao: "pegar-comentarios", ultimoId: ultimoIdComentarios, id: usuario_perfil.id};
-    console.log(data.ultimoIdComentarios);
+    // console.log(data);
     $.ajax({
         type: "post",
         url: "php/handler/usuarioHandler.php",

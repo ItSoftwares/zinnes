@@ -169,7 +169,7 @@ $capitulos = $temp;
         <section id="main">
             <i class="fa fa-angle-right aside-menu"></i>
             <article>
-                <h4>Capítulos <span>(<? echo $capitulos[$titulo->id]['numero']." de ".$serie->capitulos ?>)</span> <span class="right"><? echo date("d M, Y", strtotime($titulo->data)) ?></span></h4>
+                <h4>Capítulos <span>(<? echo $titulo->numero." de ".$serie->capitulos ?>)</span> <span class="right"><? echo date("d M, Y", strtotime($titulo->data)) ?></span></h4>
 
                 <h1><? echo $titulo->nome ?></h1>
 

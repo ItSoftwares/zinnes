@@ -99,11 +99,6 @@ $("#link-login a").click(function(e) {
     if ($("#topo").hasClass('aberto')) $("#menu-toogle").click();
 });
 
-// $("#login-google").click(function() {
-//     chamarPopupInfo("Ainda estamos trabalhando nesta área. Faça seu cadastro aqui!");
-//     $("#label-cadastro").click();
-// });
-
 $(document).on("click", ".popup", function() {
    // console.log("a")
     $(this).clearQueue().fadeOut(function() {
@@ -220,7 +215,7 @@ function pegarNotificacoes(ultimaDataTemp) {
     ultimaDataTemp = ultimaDataTemp==99999999999?0:ultimaDataTemp;
    // $("#notificacoes ul").removeClass();
     data = {funcao: "pegarNotificacoes", ultimaData: ultimaDataTemp, id_usuario: usuario.id};
-    console.log(data);
+    // console.log(data);
     $.ajax({
         type: "post",
         url: "php/handler/usuarioHandler.php",
@@ -235,11 +230,10 @@ function pegarNotificacoes(ultimaDataTemp) {
                 result.logs = result.logs==null?[]:result.logs;
                 
                 resultado = result.notificacoes.concat(result.logs);
+                resultado = resultado.concat(result.comentarios);
                 
                 $.each(resultado, function(i, value) {
-                    var t = value.data.split(/[- :]/);
-
-                    value.time = new Date(Date.UTC(t[0], t[1]-1, t[2], t[3], t[4], t[5])).getTime()/1000;
+                    value.time = timeToTimestamp(value.data);
 
                     if (ultimaData>value.time) {
                         ultimaData = value.time;
@@ -247,8 +241,8 @@ function pegarNotificacoes(ultimaDataTemp) {
                 });
                 
                 resultado.sort(function(a, b) {
-                    return a.time < b.time;
-
+                    return b.time - a.time;
+                    
                     if (ultimaData>value.time) {
                         ultimaData = value.time;
                     }
@@ -258,12 +252,12 @@ function pegarNotificacoes(ultimaDataTemp) {
                     adicionarNotificacao(value);
                 });
 
-                console.log(ultimaData);
+                console.log(resultado);
 
                 if ("acabou" in result) {
                     acabouNotificacoes = true;
                     $("#notificacoes .img-loading").hide();
-                    if ($("#nao-tem").length==0) $("#notificacoes").append("<p id='nao-tem'>Sem mais notificações!");
+                    // if ($("#nao-tem").length==0) $("#notificacoes").append("<p id='nao-tem'>Sem mais notificações!");
                 }
                 carregandoNotificacoes = false;
             } else {
@@ -300,6 +294,21 @@ function adicionarNotificacao(notificacao) {
         
         $("#notificacoes ul .img-loading").before(temp);
     } 
+    else if ('id_comentario' in notificacao && !('id_moderador' in notificacao)) {
+    	url = (notificacao.id_usuario!=null?"/perfil":((notificacao.tipo==1?"lerComic":"lerNovel")+"/"+notificacao.id_titulo));
+        
+        temp = "<li class='notificacao "+lido+"'>";
+        temp += "<a href='"+url+"'>";
+        if (notificacao.foto_perfil!=null) temp += "<img src='servidor/thumbs-usuarios/"+notificacao.foto_perfil+"'>";
+        else temp += "<img src='img/profile-default.png'>";
+        temp += "<div>";
+        temp += "<h4>Comentário de <b>"+notificacao.nickname+"</b></h4>";
+        if (notificacao.id_usuario==null) temp += "<p>Comentario no capítulo "+notificacao.titulo+"</p>";
+        else temp += "<p>Comentário feito em seu mural.</p>";
+        temp += "<span class='data'>"+getData(notificacao.time)+"</span>";
+        
+        $("#notificacoes ul .img-loading").before(temp);
+    }
     else {
         temp = "<li class='notificacao log "+lido+"'>";
         temp += "<a href=''>";

@@ -26,7 +26,8 @@ unset($_SESSION['erro_msg']);
 if (isset($_SESSION['logado'])) {
     $notificacoes = DBselect("notificacao", "where id_usuario={$usuario->id} and lido=0 order by data DESC limit 10", "COUNT(*) as qtd")[0]['qtd'];
     $logs = DBselect("log_moderador", "where id_usuario={$usuario->id} and lido=0 order by data DESC limit 10", "COUNT(*) as qtd")[0]['qtd'];
-    $qtd = $notificacoes+$logs;
+    $comentarios = DBselect("notificacao_comentario", "where (id_usuario = {$usuario->id} or id_titulo in (select id from titulo where id_projeto in (select id from projeto where id_usuario = {$usuario->id}))) and lido=0 order by data DESC limit 10", "COUNT(*) as qtd")[0]['qtd'];
+    $qtd = $notificacoes+$logs+$comentarios;
 }
 ?>
 <head>

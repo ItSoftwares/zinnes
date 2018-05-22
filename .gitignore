@@ -8,3 +8,5 @@ zinnes.sql
 php/vendor/
 php/database/config.php
 ftpsync.settings
+.dropbox
+desktop.ini

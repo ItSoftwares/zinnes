@@ -28,10 +28,12 @@ function DBcreate($tabela, array $data) {
     return $result;
 }
 
-function DBselect($tabela, $param = null, $campos = '*') {
+function DBselect($tabela, $param = null, $campos = '*', $echo = false) {
     $param = ($param) ? " " . $param : null;
     $query = "select {$campos} from {$tabela}{$param}";
-    // echo $query; exit;
+    if ($echo) {
+    	echo $query; exit;
+    }
     $result = DBexecute($query);
 
     if (mysqli_num_rows($result) > 0) {

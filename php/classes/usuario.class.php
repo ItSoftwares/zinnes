@@ -1,6 +1,7 @@
-<?
-// date_default_timezone_set('America/Sao_Paulo');
+<?php
+
 class Usuario {
+
     private $props = []; 
     public $valores_atualizar = array();
     
@@ -386,6 +387,15 @@ class Usuario {
         $id = DBcreate("comentario_usuario", $this->toArray());
         $this->id = $id;
         $this->data = time();
+
+        if ($this->para!=$this->de) {
+        	DBcreate("notificacao_comentario", array(
+	        	'id_usuario'=>$this->para,
+	        	'id_comentario'=>$id,
+	        	'id_de'=>$this->de
+	        ));
+        }
+
         return array('estado'=>1, 'mensagem'=>"Comentário postado!", 'comentario' => $this->toArray());
     }
     
@@ -409,7 +419,8 @@ class Usuario {
         $comentarios1 = DBselect("comentario_usuario c INNER JOIN usuario u ON c.de = u.id", "where para={$this->id}{$ultimo} and id_referencia IS NULL order by data DESC limit 10", "c.*, u.foto_perfil, u.nickname");
         
         $comentarios2 = [];
-        if ($this->ultimoId==0) $comentarios2 = DBselect("comentario_usuario c INNER JOIN usuario u ON c.de = u.id", "where para={$this->id}{$ultimo} and id_referencia IS NOT NULL order by data DESC", "c.*, u.foto_perfil, u.nickname");
+        if ($this->ultimoId==0) 
+        	$comentarios2 = DBselect("comentario_usuario c INNER JOIN usuario u ON c.de = u.id", "where para={$this->id}{$ultimo} and id_referencia IS NOT NULL order by data DESC", "c.*, u.foto_perfil, u.nickname");
 
         foreach ($comentarios1 as $key => $value) {
             $comentarios1[$key]['data'] = strtotime($value['data']);
@@ -566,7 +577,7 @@ class Usuario {
         $mail->addAddress("suporte@zinnes.com.br", "Email ZINNES");
 
         foreach ($lista as $key => $value) {
-            $mail->addCC($value['email'], $value['nome']);
+            $mail->addBCC($value['email'], $value['nome']);
         }
 
         $mail->SMTPDebug = 0;							// Enable verbose debug output
@@ -623,10 +634,6 @@ class Usuario {
         $id = DBcreate('log_moderador', $log);
     }
     
-    public function novaNotificacao($notificacao) {
-       // $id = DBcreate('notificacao', $notificacao);
-    }
-    
     public function pegarNotificacoes($data = 0) {
         $extra = $data!=0?" and n.data < '".date('Y-m-d H:i:s', $data)."'":"";
         $extra2 = $data!=0?" and data < '".date('Y-m-d H:i:s', $data)."'":"";
@@ -634,9 +641,17 @@ class Usuario {
         $notificacoes = DBselect('notificacao n INNER JOIN titulo t ON n.id_titulo = t.id INNER JOIN projeto p ON t.id_projeto = p.id', "where n.id_usuario = {$this->id}{$extra} order by n.data DESC limit 10", "n.*, t.nome, t.descricao, t.id_projeto, t.thumb_titulo, p.thumb_projeto, p.tipo");
         
         $logs = DBselect('log_moderador', "where id_usuario = {$this->id}{$extra2} order by data DESC limit 10");
+
+        $comentarios = DBselect('notificacao_comentario n INNER JOIN usuario u ON u.id = n.id_de', "where id_usuario = {$this->id}{$extra2} or id_titulo in (select id from titulo where id_projeto in (select id from projeto where id_usuario = {$this->id})) order by data DESC limit 10", 
+        	"n.*, u.foto_perfil, u.nickname, 
+        	(select tipo from projeto where id in (select id_projeto from titulo where id = n.id_titulo)) tipo, 
+        	(select nome from titulo where id = n.id_titulo) titulo");
+        	
+        // $comentarios = [];
         
         DBupdate("notificacao", array('lido' => 1), "where id_usuario={$this->id}");
         DBupdate("log_moderador", array('lido' => 1), "where id_usuario={$this->id}");
+        DBupdate("notificacao_comentario", array('lido' => 1), "where id_usuario = {$this->id} or id_titulo in (select id from titulo where id_projeto in (select id from projeto where id_usuario = {$this->id}))");
         
         $notificacoes = $notificacoes==null?[]:$notificacoes;
         $logs = $logs==null?[]:$logs;
@@ -644,7 +659,8 @@ class Usuario {
         $retorno = [];
         $retorno['notificacoes'] = $notificacoes;
         $retorno['logs'] = $logs;
-        if (count($notificacoes)<10 and count($logs)<10) $retorno['acabou'] = 1;
+        $retorno['comentarios'] = $comentarios;
+        if (count($notificacoes)<10 and count($logs)<10 and count($comentarios)<10) $retorno['acabou'] = 1;
         
         return $retorno;
     }

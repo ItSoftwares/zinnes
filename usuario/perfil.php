@@ -67,7 +67,7 @@ if ($_GET['seguindo']!="") {
         $usuario_perfil = new Usuario($tempUsuario);
     }
 
-    $qtd_gosteis = DBselect("avaliar_titulo", "where id_usuario = {$usuario_perfil->id}", "count(*) as qtd")[0]['qtd'];
+    $qtd_gosteis = DBselect("avaliar_titulo", "where id_titulo in (select id from titulo where id_projeto in (select id from projeto where id_usuario = {$usuario_perfil->id}))", "count(id_usuario) as qtd")[0]['qtd'];
 
     $qtd_seguidores = DBselect("seguir_projeto", "where id_projeto in (select id from projeto where id_usuario={$usuario_perfil->id})", "count(id_usuario) as qtd")[0]['qtd'];
 

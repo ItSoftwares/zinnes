@@ -122,6 +122,7 @@ class Titulo {
         DBdelete("avaliar_titulo", "where id_titulo={$this->id}");
         DBdelete("comentario_titulo", "where id_titulo={$this->id}");
         DBdelete("notificacao", "where id_titulo={$this->id}");
+        DBdelete("notificacao_comentario", "where id_titulo={$this->id}");
 
         return array('estado'=>1, 'mensagem'=>"Capítulo excluido!"); 
     }
@@ -331,6 +332,13 @@ class Titulo {
         $id = DBcreate("comentario_titulo", $this->toArray());
         $this->id = $id;
         $this->data = time();
+
+        DBcreate("notificacao_comentario", array(
+        	'id_titulo'=>$this->id_titulo,
+        	'id_comentario'=>$id,
+        	'id_de'=>$this->id_usuario
+        ));
+
         return array('estado'=>1, 'mensagem'=>"Comentário postado!", 'comentario' => $this->toArray());
     }
     
