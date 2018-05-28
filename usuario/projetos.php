@@ -95,8 +95,10 @@ $generos = DBselect("genero", "order by nome ASC");
                 <button class="botao" id="enviar-confirmacao">ENVIAR CONFIRMAÇÃO</button>
 
                 <? } else if (isset($nickname)) {?>
-
+<!-- 
                 <p class="aviso">Este usuário não confirmou a conta ainda!</p>
+                <br> -->
+                <button class="botao" id="ativar">Confirmar conta do usuario</button>
 
                 <? } ?>
             </ul>

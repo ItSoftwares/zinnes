@@ -48,6 +48,39 @@ $("#enviar-confirmacao").click(function() {
     });
 });
 
+$("#ativar").click(function() {
+    data = {funcao: "confirmar-conta-moderador", id: usuario.id, confirmado: 1};
+    
+    $(this).attr("disabled", true);
+    $.ajax({
+        type: "post",
+        url: "php/handler/usuarioHandler.php",
+        data: data,
+        success: function(result) {
+            console.log(result);
+            result = JSON.parse(result);
+            
+            if (result.estado==1) {
+                chamarPopupInfo(result.mensagem);
+                usuario.confirmado = 1;
+                $("#enviar-confirmacao").attr("disabled", false);
+            } else {
+                chamarPopupInfo(result.mensagem);
+                $("#enviar-confirmacao").attr("disabled", false);
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            chamarPopupErro("Desculpe, houve um erro, por favor atualize a página ou nos contate.");
+            console.log(XMLHttpRequest);
+            console.log(textStatus);
+            console.log(errorThrown);
+        },
+        complete: function() {
+            removerLoading();
+        }
+    });
+});
+
 $('#form-serie').on('keypress', function (e) {
     var keyCode = e.keyCode || e.which;
     if (keyCode === 13) {

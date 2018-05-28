@@ -28,15 +28,27 @@ $("#menu-toogle").click(function() {
     $("#topo").toggleClass('aberto');
 });
 
-$("#pesquisar:not(.aberto) i").click(function() {
-	// if (aberto=="perfil") $("#foto-perfil").click();
-	// if (aberto=="notificacao") $("#icon-notificacao").click();
-	
-	$("#pesquisar").addClass("aberto").find("input").focus();;
+$("#pesquisar i").click(function() {
+	if ($(this).parent().hasClass('aberto')) {
+		p = $("#pesquisar input").val();
+		console.log(p);
+		if (p.length>0) {
+	        link = "/pesquisa/serie/1/"+$(this).val(); 
+	        // console.log(link); return;
+	        location.href = link;
+	    } else {
+	    	$(this).parent().removeClass();
+	    }
+	} else
+		$("#pesquisar").addClass("aberto").find("input").focus();
 });
 
+// $("#pesquisar.aberto i").click(function() {
+	
+// });
+
 $("#pesquisar input").focusout(function() {
-	$(this).parent().removeClass();
+	// $(this).parent().removeClass();
 });
 
 $("#pesquisar input").keydown(function(e) {

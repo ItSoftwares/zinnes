@@ -89,6 +89,13 @@ if (isset($_POST['funcao'])) {
         echo json_encode($result);
         exit;
     }
+    else if ($funcao=="confirmar-conta-moderador") {
+    	$usuario = new Usuario($dados);
+        $result = $usuario->atualizar();
+        
+        echo json_encode($result);
+        exit;
+    }
     else if ($funcao=="pegarNotificacoes") {
         $usuario = unserialize($_SESSION['usuario']);
         

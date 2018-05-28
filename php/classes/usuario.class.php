@@ -367,7 +367,7 @@ class Usuario {
         
         $img2 = imagecrop($img, ['x' => 0, 'y' => 0, 'width' => $w, 'height' => $w]);
 
-        imagejpeg($img2, $dirname.$save, 50);
+        imagejpeg($img2, $dirname.$save, 75);
         imagedestroy($img2);
         
         if ($this->foto_perfil!=null || $this->foto_perfil!="") unlink($dirname.$this->foto_perfil);

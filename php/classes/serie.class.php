@@ -161,7 +161,7 @@ class serie {
         
         $img2 = imagecrop($img, ['x' => 0, 'y' => 0, 'width' => $w, 'height' => $w]);
 
-        imagejpeg($img2, $dirname.$save, 50);
+        imagejpeg($img2, $dirname.$save, 78);
         imagedestroy($img2);
         
         if ($antiga!=null || $antiga!="") unlink($dirname.$antiga);
@@ -193,7 +193,7 @@ class serie {
         
         $img2 = imagecrop($img, ['x' => 0, 'y' => 0, 'width' => $w, 'height' => $h]);
 
-        imagejpeg($img2, $dirname.$save, 50);
+        imagejpeg($img2, $dirname.$save, 78);
         imagedestroy($img2);
         
         if ($antiga!=null || $antiga!="") unlink($dirname.$antiga);

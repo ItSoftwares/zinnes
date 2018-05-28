@@ -266,7 +266,7 @@ class Titulo {
         $img2 = imagecrop($img, ['x' => 0, 'y' => 0, 'width' => $w, 'height' => $w]);
 
         if ($img2 !== FALSE) {
-            imagejpeg($img2, $dirname.$save, 90);
+            imagejpeg($img2, $dirname.$save, 78);
             imagedestroy($img2);
             // echo "deu certo";
         } else {
@@ -291,7 +291,7 @@ class Titulo {
             
             $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $imagem['fileData']));
             $img = imagecreatefromstring($data);
-            imagejpeg($img, $dirname.$save.".jpg", 90);
+            imagejpeg($img, $dirname.$save.".jpg", 78);
             
             $nomes[$numero] = $save;
         }
